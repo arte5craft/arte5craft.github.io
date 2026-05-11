@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dhyeya Anand — Engineering Product Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0e;
+    --surface: #141416;
+    --border: #1e1e22;
+    --accent: #7c5cfc;
+    --accent2: #e8ff48;
+    --text: #f0ede8;
+    --muted: #6b6875;
+    --card: #17171a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,14,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+  }
+
+  .hero-bg-blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,92,252,0.15) 0%, transparent 70%);
+    top: 10%;
+    right: -100px;
+    filter: blur(40px);
+  }
+
+  .hero-left {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 48px 80px 80px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124,92,252,0.1);
+    border: 1px solid rgba(124,92,252,0.3);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    width: fit-content;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(52px, 6vw, 82px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    color: var(--muted);
+    max-width: 420px;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: #9070ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124,92,252,0.3);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-right {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 80px 80px 48px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .stat-box {
+    background: var(--card);
+    padding: 28px 24px;
+    transition: background 0.2s;
+  }
+
+  .stat-box:hover { background: #1d1d21; }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--accent2);
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 80px;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1;
+    margin-bottom: 60px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .project-card {
+    background: var(--card);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(124,92,252,0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .project-card:hover { background: #1a1a1e; }
+  .project-card:hover::after { opacity: 1; }
+
+  .project-card.featured {
+    grid-column: span 2;
+    background: linear-gradient(135deg, #17171a, #1a1520);
+  }
+
+  .project-num {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .project-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  .project-tag {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: rgba(124,92,252,0.1);
+    color: var(--accent);
+    border: 1px solid rgba(124,92,252,0.2);
+  }
+
+  .award-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--accent2);
+    letter-spacing: 0.05em;
+    background: rgba(232,255,72,0.08);
+    border: 1px solid rgba(232,255,72,0.2);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* AWARDS */
+  .awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .award-item {
+    background: var(--card);
+    padding: 28px 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    transition: background 0.2s;
+  }
+
+  .award-item:hover { background: #1a1a1e; }
+
+  .award-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .award-content h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .award-content p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .award-year {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--muted);
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+
+  /* SKILLS SECTION */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .skill-category {
+    background: var(--card);
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+
+  .skill-category:hover { background: #1a1a1e; }
+
+  .skill-cat-icon {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .skill-cat-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .skill-item::before {
+    content: '—';
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* LEADERSHIP */
+  .leadership-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .leadership-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2));
+  }
+
+  .leadership-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .leadership-card .role-tag {
+    display: inline-block;
+    background: rgba(232,255,72,0.1);
+    border: 1px solid rgba(232,255,72,0.25);
+    color: var(--accent2);
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .leadership-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .leadership-points li {
+    display: flex;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .leadership-points li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* EDUCATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .edu-card {
+    background: var(--card);
+    padding: 40px 36px;
+    transition: background 0.2s;
+  }
+
+  .edu-card:hover { background: #1a1a1e; }
+
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .edu-school {
+    color: var(--accent);
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .edu-period {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .edu-gpa {
+    display: inline-block;
+    margin-top: 16px;
+    background: rgba(232,255,72,0.08);
+    border: 1px solid rgba(232,255,72,0.2);
+    color: var(--accent2);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 2px;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    text-align: center;
+    padding: 100px 80px 120px;
+  }
+
+  .contact-section .section-label {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .contact-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1.0;
+    margin-bottom: 20px;
+  }
+
+  .contact-section h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .contact-section p {
+    color: var(--muted);
+    max-width: 400px;
+    margin: 0 auto 40px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 100px 24px 40px; }
+    .hero-right { padding: 0 24px 60px; }
+    section { padding: 60px 24px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-section { padding: 60px 24px; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">D<span>.</span>A</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-blob"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Available for opportunities</div>
+    <h1>Dhyeya<br><em>Anand</em></h1>
+    <p class="hero-desc">
+      Engineering Product Development student at SUTD. I build robots, wearable devices, and competition machines — bridging hardware and software to solve real-world problems.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="mailto:dhyeya_anand@mymail.sutd.edu.sg" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Major Projects</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Awards Won</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">SG</div>
+        <div class="stat-label">Intl. Represented</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">48Nm</div>
+        <div class="stat-label">Peak Torque Built</div>
+      </div>
+    </div>
+    <div class="hero-skills">
+      <span class="skill-tag">Fusion 360</span>
+      <span class="skill-tag">3D Printing</span>
+      <span class="skill-tag">Arduino</span>
+      <span class="skill-tag">Raspberry Pi</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">Robotics</span>
+      <span class="skill-tag">CAD</span>
+      <span class="skill-tag">Waterjet</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label reveal">Selected Projects</div>
+  <h2 class="section-title reveal">Built with hands<br><em>and code</em></h2>
+
+  <div class="projects-grid reveal">
+
+    <div class="project-card featured">
+      <div class="project-num">01 — FEB 2026</div>
+      <div class="project-name">GaitWay</div>
+      <p class="project-desc">
+        A wearable capstan-drive mechanism designed to assist leg lifting for stroke rehabilitation. Engineered to deliver ~48 Nm of torque under tight motor, space, and $350 budget constraints. Dyneema rope was chosen to minimise creep and ensure stable, repeatable actuation. The compact, body-mounted system successfully assisted human gait at natural walking pace.
+      </p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+        <span class="award-badge">🏆 Breakthrough Innovation Award</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Capstan Drive</span>
+        <span class="project-tag">Wearable</span>
+        <span class="project-tag">Rehabilitation</span>
+        <span class="project-tag">Mechatronics</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02 — SEPT 2025</div>
+      <div class="project-name">6DOF Robotic Arm</div>
+      <p class="project-desc">
+        Assistive feeding robot with bearing-supported joints for smooth motion control. Integrated servo-driven actuation for precise end-effector positioning. Refined link geometry improved structural stability.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Servo Control</span>
+        <span class="project-tag">6DOF</span>
+        <span class="project-tag">Assistive Tech</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03 — DEC 2024</div>
+      <div class="project-name">VEX Competition Robot</div>
+      <p class="project-desc">
+        Built two competition robots within 5 months for VEX Beijing Skills Tournament, representing Singapore. Designed and fabricated intake mechanism for cylindrical game objects via Fusion 360 and waterjet cutting.
+      </p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+        <span class="award-badge">🏅 Amaze Award</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Competition</span>
+        <span class="project-tag">VEX</span>
+        <span class="project-tag">Fusion 360</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">04 — 2025</div>
+      <div class="project-name">Beach Cleaning Robot</div>
+      <p class="project-desc">
+        Autonomous coastal cleanup robot with real-world deployment focus. Won the prestigious Jyoti and Aditya Mathur Student Achievement Award for sensor integration and practical robotics.
+      </p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+        <span class="award-badge">🏆 Student Achievement Award</span>
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Autonomous</span>
+        <span class="project-tag">Sensors</span>
+        <span class="project-tag">Field Robot</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">05 — 2025</div>
+      <div class="project-name">Novice Programmer Platform</div>
+      <p class="project-desc">
+        Web-based platform to lower the barrier to entry for novice programmers. Built during international exchange at University of Economics, HCMC, Vietnam.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Web Dev</span>
+        <span class="project-tag">Node.js</span>
+        <span class="project-tag">EdTech</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="section-label reveal">Recognition</div>
+  <h2 class="section-title reveal">Awards &amp;<br><em>Achievements</em></h2>
+
+  <div class="awards-list reveal">
+    <div class="award-item">
+      <div class="award-icon">🏆</div>
+      <div class="award-content">
+        <h3>Breakthrough Innovation Award — GaitWay</h3>
+        <p>Awarded for designing a wearable capstan-drive rehabilitation device meeting engineering constraints under a $350 budget.</p>
+      </div>
+      <div class="award-year">2026</div>
+    </div>
+    <div class="award-item">
+      <div class="award-icon">🥇</div>
+      <div class="award-content">
+        <h3>Jyoti &amp; Aditya Mathur Student Achievement Award</h3>
+        <p>Built an autonomous coastal cleanup robot with exceptional sensor integration and real-world deployment capability.</p>
+      </div>
+      <div class="award-year">2025</div>
+    </div>
+    <div class="award-item">
+      <div class="award-icon">🤖</div>
+      <div class="award-content">
+        <h3>Amaze Award — SUTD Competitive Robotics Team</h3>
+        <p>Represented Singapore at VEX Beijing Skills Tournament, building two competition robots within 5 months under strict constraints.</p>
+      </div>
+      <div class="award-year">2024</div>
+    </div>
+    <div class="award-item">
+      <div class="award-icon">🥈</div>
+      <div class="award-content">
+        <h3>First Runner-Up — Hyundai Motor Group Tech Bot Challenge</h3>
+        <p>Rapid assembly and calibration of an industrial colour-sorting robotic system under timed competition conditions.</p>
+      </div>
+      <div class="award-year">2023</div>
+    </div>
+    <div class="award-item">
+      <div class="award-icon">✈️</div>
+      <div class="award-content">
+        <h3>Global Exchange — University of Economics, HCMC</h3>
+        <p>Selected for international exchange programme in Vietnam; collaborated on a web platform for novice programmers.</p>
+      </div>
+      <div class="award-year">2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">Technical Toolkit</div>
+  <h2 class="section-title reveal">What I work<br><em>with</em></h2>
+
+  <div class="skills-grid reveal">
+    <div class="skill-category">
+      <div class="skill-cat-icon">✏️</div>
+      <div class="skill-cat-name">Design & Fabrication</div>
+      <div class="skill-list">
+        <span class="skill-item">Fusion 360</span>
+        <span class="skill-item">Blender</span>
+        <span class="skill-item">3D Printing (FDM)</span>
+        <span class="skill-item">Laser Cutting</span>
+        <span class="skill-item">WaterJet Cutting</span>
+        <span class="skill-item">Machining</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-icon">🤖</div>
+      <div class="skill-cat-name">Robotics & Electronics</div>
+      <div class="skill-list">
+        <span class="skill-item">ESP32</span>
+        <span class="skill-item">Arduino</span>
+        <span class="skill-item">Raspberry Pi</span>
+        <span class="skill-item">Motor Control</span>
+        <span class="skill-item">Sensor Integration</span>
+        <span class="skill-item">Soldering</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-icon">💻</div>
+      <div class="skill-cat-name">Software</div>
+      <div class="skill-list">
+        <span class="skill-item">Python</span>
+        <span class="skill-item">JavaScript</span>
+        <span class="skill-item">Node.js</span>
+        <span class="skill-item">HTML / CSS</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-cat-icon">🤝</div>
+      <div class="skill-cat-name">Collaboration</div>
+      <div class="skill-list">
+        <span class="skill-item">Cross-functional Teams</span>
+        <span class="skill-item">Rapid Prototyping</span>
+        <span class="skill-item">Technical Problem Solving</span>
+        <span class="skill-item">Hackathon Direction</span>
+        <span class="skill-item">Sponsor Relations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="section-label reveal">Leadership</div>
+  <h2 class="section-title reveal">Driving things<br><em>forward</em></h2>
+
+  <div class="leadership-card reveal">
+    <h3>What The Hack 2026</h3>
+    <span class="role-tag">Project Director</span>
+    <ul class="leadership-points">
+      <li>Directing a Singapore-wide hackathon that unites hardware and software builders to create integrated prototypes addressing real sponsor problem statements.</li>
+      <li>Responsible for sponsor relations, hackathon topic ideation, and end-to-end event logistics for a national-scale event.</li>
+      <li>Curating problem statements that push participants to prototype at the intersection of physical and digital systems.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label reveal">Education</div>
+  <h2 class="section-title reveal">Academic<br><em>foundation</em></h2>
+
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-degree">B.Eng. Engineering Product Development</div>
+      <div class="edu-school">Singapore University of Technology and Design (SUTD)</div>
+      <div class="edu-period">September 2024 – Present</div>
+      <div class="edu-gpa">Currently Enrolled</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">International Baccalaureate Diploma</div>
+      <div class="edu-school">United World College of South East Asia (UWCSEA)</div>
+      <div class="edu-period">August 2022 – May 2024</div>
+      <div class="edu-gpa">GPA: 3.6 / 4.0</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <span class="section-label">Get In Touch</span>
+  <h2>Let's build<br>something <em>real</em></h2>
+  <p>Open to internships, collaborations, and interesting engineering challenges. I love projects where hardware meets purpose.</p>
+  <div class="contact-links">
+    <a href="mailto:dhyeya_anand@mymail.sutd.edu.sg" class="contact-link">
+      ✉ dhyeya_anand@mymail.sutd.edu.sg
+    </a>
+    <a href="https://www.linkedin.com/in/DhyeyaAnand" target="_blank" class="contact-link">
+      ↗ LinkedIn
+    </a>
+    <a href="tel:+6581537963" class="contact-link">
+      📞 +65 8153 7963
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Dhyeya Anand</span>
+  <span>Engineering Product Development · Singapore</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id], .hero');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id || '';
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+    });
+  });
+</script>
+</body>
+</html>
