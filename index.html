@@ -16,6 +16,23 @@
     --text: #f0ede8;
     --muted: #6b6875;
     --card: #17171a;
+    --nav-bg: rgba(13,13,14,0.85);
+    --blob-color: rgba(124,92,252,0.15);
+    --stat-num-color: #e8ff48;
+  }
+
+  :root.light {
+    --bg: #f5f3ef;
+    --surface: #edeae4;
+    --border: #ddd9d0;
+    --accent: #6244e8;
+    --accent2: #1a1a2e;
+    --text: #1a1714;
+    --muted: #7a7570;
+    --card: #f0ede8;
+    --nav-bg: rgba(245,243,239,0.88);
+    --blob-color: rgba(98,68,232,0.1);
+    --stat-num-color: #6244e8;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,7 +69,7 @@
     align-items: center;
     padding: 20px 48px;
     border-bottom: 1px solid var(--border);
-    background: rgba(13,13,14,0.85);
+    background: var(--nav-bg);
     backdrop-filter: blur(12px);
   }
 
@@ -109,7 +126,7 @@
     width: 600px;
     height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(124,92,252,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--blob-color) 0%, transparent 70%);
     top: 10%;
     right: -100px;
     filter: blur(40px);
@@ -259,7 +276,7 @@
     font-family: 'DM Serif Display', serif;
     font-size: 40px;
     line-height: 1;
-    color: var(--accent2);
+    color: var(--stat-num-color);
     margin-bottom: 4px;
   }
 
@@ -696,7 +713,65 @@
     transform: translateY(0);
   }
 
-  /* SCROLLBAR */
+  /* THEME TOGGLE */
+  #theme-toggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  #theme-toggle:hover {
+    border-color: var(--accent);
+    transform: scale(1.08);
+  }
+
+  /* Light mode overrides for elements using hardcoded colors */
+  :root.light .project-card.featured {
+    background: linear-gradient(135deg, #ede9e0, #e8e2f5);
+  }
+
+  :root.light .hero-bg-grid {
+    opacity: 0.25;
+  }
+
+  :root.light .leadership-card {
+    background: var(--card);
+    border-color: var(--border);
+  }
+
+  :root.light .award-badge {
+    background: rgba(26,26,46,0.06);
+    border-color: rgba(26,26,46,0.18);
+    color: #1a1a2e;
+  }
+
+  :root.light .role-tag {
+    background: rgba(26,26,46,0.07);
+    border-color: rgba(26,26,46,0.18);
+    color: #1a1a2e;
+  }
+
+  :root.light .edu-gpa {
+    background: rgba(98,68,232,0.07);
+    border-color: rgba(98,68,232,0.2);
+    color: var(--accent);
+  }
+
+  :root.light body::before { opacity: 0.15; }
+
+  :root.light .btn-primary { color: #fff; }
+
+
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
@@ -730,6 +805,7 @@
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
 </nav>
 
 <!-- HERO -->
@@ -1030,6 +1106,18 @@
 </footer>
 
 <script>
+  // Theme toggle
+  const toggle = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') { root.classList.add('light'); toggle.textContent = '☀️'; }
+
+  toggle.addEventListener('click', () => {
+    const isLight = root.classList.toggle('light');
+    toggle.textContent = isLight ? '☀️' : '🌙';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
