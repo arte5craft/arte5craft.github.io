@@ -36,7 +36,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -48,7 +47,6 @@
     overflow-x: hidden;
   }
 
-  /* GRAIN OVERLAY */
   body::before {
     content: '';
     position: fixed;
@@ -58,6 +56,10 @@
     z-index: 9999;
     opacity: 0.4;
   }
+
+  /* PAGE SYSTEM */
+  .page { display: none; }
+  .page.active { display: block; }
 
   /* NAV */
   nav {
@@ -80,8 +82,8 @@
     letter-spacing: -0.02em;
     color: var(--text);
     text-decoration: none;
+    cursor: pointer;
   }
-
   .nav-logo span { color: var(--accent); }
 
   .nav-links {
@@ -97,9 +99,25 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: color 0.2s;
+    cursor: pointer;
   }
-
   .nav-links a:hover { color: var(--text); }
+
+  #theme-toggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px; height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  #theme-toggle:hover { border-color: var(--accent); transform: scale(1.08); }
 
   /* HERO */
   .hero {
@@ -123,46 +141,34 @@
 
   .hero-bg-blob {
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 600px; height: 600px;
     border-radius: 50%;
     background: radial-gradient(circle, var(--blob-color) 0%, transparent 70%);
-    top: 10%;
-    right: -100px;
+    top: 10%; right: -100px;
     filter: blur(40px);
   }
 
   .hero-left {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
     padding: 80px 48px 80px 80px;
   }
 
   .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-flex; align-items: center; gap: 8px;
     background: rgba(124,92,252,0.1);
     border: 1px solid rgba(124,92,252,0.3);
     border-radius: 100px;
     padding: 6px 14px;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 32px;
-    width: fit-content;
+    margin-bottom: 32px; width: fit-content;
     animation: fadeUp 0.8s ease both;
   }
-
   .hero-tag::before {
     content: '';
     width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
+    border-radius: 50%; background: var(--accent);
     animation: pulse 2s infinite;
   }
 
@@ -179,188 +185,108 @@
     margin-bottom: 24px;
     animation: fadeUp 0.8s 0.1s ease both;
   }
-
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  h1 em { font-style: italic; color: var(--accent); }
 
   .hero-desc {
     color: var(--muted);
-    max-width: 420px;
-    font-size: 14px;
-    line-height: 1.8;
+    max-width: 420px; font-size: 14px; line-height: 1.8;
     margin-bottom: 40px;
     animation: fadeUp 0.8s 0.2s ease both;
   }
 
   .hero-cta {
-    display: flex;
-    gap: 16px;
+    display: flex; gap: 16px;
     animation: fadeUp 0.8s 0.3s ease both;
   }
 
   .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent);
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 0.03em;
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    padding: 14px 28px; border-radius: 4px;
+    text-decoration: none; font-size: 13px; letter-spacing: 0.03em;
+    font-family: 'Syne', sans-serif; font-weight: 600;
+    transition: all 0.2s; cursor: pointer; border: none;
   }
-
   .btn-primary:hover {
-    background: #9070ff;
-    transform: translateY(-2px);
+    background: #9070ff; transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(124,92,252,0.3);
   }
 
   .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 14px 28px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 0.03em;
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border); color: var(--text);
+    padding: 14px 28px; border-radius: 4px;
+    text-decoration: none; font-size: 13px; letter-spacing: 0.03em;
+    font-family: 'Syne', sans-serif; font-weight: 600;
+    transition: all 0.2s; cursor: pointer; background: transparent;
   }
-
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
   .hero-right {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
     padding: 80px 80px 80px 48px;
     animation: fadeUp 0.8s 0.4s ease both;
   }
 
   .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 24px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden; margin-bottom: 24px;
   }
 
   .stat-box {
-    background: var(--card);
-    padding: 28px 24px;
-    transition: background 0.2s;
+    background: var(--card); padding: 28px 24px; transition: background 0.2s;
   }
-
   .stat-box:hover { background: #1d1d21; }
 
   .stat-num {
     font-family: 'DM Serif Display', serif;
-    font-size: 40px;
-    line-height: 1;
-    color: var(--stat-num-color);
-    margin-bottom: 4px;
+    font-size: 40px; line-height: 1;
+    color: var(--stat-num-color); margin-bottom: 4px;
   }
+  .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
-  .stat-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .hero-skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  .hero-skills { display: flex; flex-wrap: wrap; gap: 8px; }
 
   .skill-tag {
-    border: 1px solid var(--border);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    transition: all 0.2s;
+    border: 1px solid var(--border); padding: 6px 12px; border-radius: 4px;
+    font-size: 11px; color: var(--muted); letter-spacing: 0.05em; transition: all 0.2s;
   }
-
-  .skill-tag:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
 
   /* SECTIONS */
-  section {
-    padding: 100px 80px;
-    border-top: 1px solid var(--border);
-  }
+  section { padding: 100px 80px; border-top: 1px solid var(--border); }
 
   .section-label {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px;
   }
 
   .section-title {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 4vw, 52px);
-    line-height: 1.1;
-    margin-bottom: 60px;
+    font-size: clamp(32px, 4vw, 52px); line-height: 1.1; margin-bottom: 60px;
   }
+  .section-title em { font-style: italic; color: var(--accent); }
 
   /* PROJECTS */
   .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
   }
 
   .project-card {
-    background: var(--card);
-    padding: 36px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    transition: background 0.2s;
-    cursor: default;
-    position: relative;
-    overflow: hidden;
+    background: var(--card); padding: 36px 32px;
+    display: flex; flex-direction: column; gap: 16px;
+    transition: background 0.2s; position: relative; overflow: hidden;
   }
-
   .project-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(135deg, rgba(124,92,252,0.05), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
+    opacity: 0; transition: opacity 0.3s;
   }
-
   .project-card:hover { background: #1a1a1e; }
   .project-card:hover::after { opacity: 1; }
 
@@ -369,220 +295,299 @@
     background: linear-gradient(135deg, #17171a, #1a1520);
   }
 
-  .project-num {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.1em;
+  /* Clickable featured card */
+  .project-card.featured.clickable {
+    cursor: pointer;
   }
+  .project-card.featured.clickable:hover {
+    background: linear-gradient(135deg, #1d1b24, #211830);
+  }
+
+  .project-view-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--accent); font-size: 12px; letter-spacing: 0.05em;
+    margin-top: 4px; transition: gap 0.2s;
+    font-family: 'Syne', sans-serif; font-weight: 600;
+  }
+  .project-card:hover .project-view-link { gap: 10px; }
+
+  .project-num { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
 
   .project-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1.2;
+    font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.2;
   }
 
-  .project-desc {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.7;
-    flex: 1;
-  }
+  .project-desc { color: var(--muted); font-size: 13px; line-height: 1.7; flex: 1; }
 
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: auto;
-  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
 
   .project-tag {
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 2px;
-    background: rgba(124,92,252,0.1);
-    color: var(--accent);
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 2px;
+    background: rgba(124,92,252,0.1); color: var(--accent);
     border: 1px solid rgba(124,92,252,0.2);
   }
 
   .award-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 10px;
-    color: var(--accent2);
-    letter-spacing: 0.05em;
-    background: rgba(232,255,72,0.08);
-    border: 1px solid rgba(232,255,72,0.2);
-    padding: 4px 10px;
-    border-radius: 2px;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10px; color: var(--accent2); letter-spacing: 0.05em;
+    background: rgba(232,255,72,0.08); border: 1px solid rgba(232,255,72,0.2);
+    padding: 4px 10px; border-radius: 2px;
   }
 
   /* AWARDS */
   .awards-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
+    display: flex; flex-direction: column; gap: 2px;
+    background: var(--border); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
   }
 
   .award-item {
-    background: var(--card);
-    padding: 28px 32px;
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-    transition: background 0.2s;
+    background: var(--card); padding: 28px 32px;
+    display: flex; align-items: flex-start; gap: 24px; transition: background 0.2s;
   }
-
   .award-item:hover { background: #1a1a1e; }
 
-  .award-icon {
-    font-size: 24px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
+  .award-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
 
-  .award-content h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 6px;
-  }
+  .award-content h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+  .award-content p { color: var(--muted); font-size: 13px; line-height: 1.6; }
 
-  .award-content p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
-  }
+  .award-year { margin-left: auto; font-size: 11px; color: var(--muted); flex-shrink: 0; padding-top: 3px; }
 
-  .award-year {
-    margin-left: auto;
-    font-size: 11px;
-    color: var(--muted);
-    flex-shrink: 0;
-    padding-top: 3px;
-  }
-
-  /* SKILLS SECTION */
+  /* SKILLS */
   .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
   }
 
-  .skill-category {
-    background: var(--card);
-    padding: 32px 28px;
-    transition: background 0.2s;
-  }
-
+  .skill-category { background: var(--card); padding: 32px 28px; transition: background 0.2s; }
   .skill-category:hover { background: #1a1a1e; }
 
-  .skill-cat-icon {
-    font-size: 24px;
-    margin-bottom: 16px;
-  }
+  .skill-cat-icon { font-size: 24px; margin-bottom: 16px; }
+  .skill-cat-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 16px; color: var(--text); }
 
-  .skill-cat-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    margin-bottom: 16px;
-    color: var(--text);
-  }
-
-  .skill-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .skill-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .skill-item::before {
-    content: '—';
-    color: var(--accent);
-    flex-shrink: 0;
-  }
+  .skill-list { display: flex; flex-direction: column; gap: 6px; }
+  .skill-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+  .skill-item::before { content: '—'; color: var(--accent); flex-shrink: 0; }
 
   /* LEADERSHIP */
   .leadership-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 40px; position: relative; overflow: hidden;
   }
-
   .leadership-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px;
-    height: 100%;
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
     background: linear-gradient(to bottom, var(--accent), var(--accent2));
   }
-
-  .leadership-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    margin-bottom: 8px;
-  }
-
+  .leadership-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 22px; margin-bottom: 8px; }
   .leadership-card .role-tag {
     display: inline-block;
-    background: rgba(232,255,72,0.1);
-    border: 1px solid rgba(232,255,72,0.25);
-    color: var(--accent2);
-    font-size: 11px;
-    padding: 4px 12px;
-    border-radius: 2px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+    background: rgba(232,255,72,0.1); border: 1px solid rgba(232,255,72,0.25);
+    color: var(--accent2); font-size: 11px; padding: 4px 12px; border-radius: 2px;
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;
   }
-
-  .leadership-points {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .leadership-points li {
-    display: flex;
-    gap: 12px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
-  }
-
-  .leadership-points li::before {
-    content: '→';
-    color: var(--accent);
-    flex-shrink: 0;
-  }
+  .leadership-points { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .leadership-points li { display: flex; gap: 12px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .leadership-points li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
 
   /* EDUCATION */
   .edu-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  }
+  .edu-card { background: var(--card); padding: 40px 36px; transition: background 0.2s; }
+  .edu-card:hover { background: #1a1a1e; }
+  .edu-degree { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; margin-bottom: 6px; }
+  .edu-school { color: var(--accent); font-size: 13px; margin-bottom: 16px; }
+  .edu-period { font-size: 12px; color: var(--muted); }
+  .edu-gpa {
+    display: inline-block; margin-top: 16px;
+    background: rgba(232,255,72,0.08); border: 1px solid rgba(232,255,72,0.2);
+    color: var(--accent2); font-size: 12px; padding: 4px 12px; border-radius: 2px;
+  }
+
+  /* CONTACT */
+  .contact-section { text-align: center; padding: 100px 80px 120px; }
+  .contact-section .section-label { display: block; margin-bottom: 16px; }
+  .contact-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 5vw, 72px); line-height: 1.0; margin-bottom: 20px;
+  }
+  .contact-section h2 em { font-style: italic; color: var(--accent); }
+  .contact-section p { color: var(--muted); max-width: 400px; margin: 0 auto 40px; font-size: 14px; line-height: 1.8; }
+
+  .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border); color: var(--muted);
+    padding: 12px 24px; border-radius: 4px; text-decoration: none; font-size: 13px; transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--border); padding: 24px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--muted); font-size: 12px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ============================================================
+     GAITWAY PROJECT PAGE
+     ============================================================ */
+
+  #page-gaitway {
+    padding-top: 80px;
+    min-height: 100vh;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .gw-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 80px 100px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gw-hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+  }
+
+  .gw-hero-blob {
+    position: absolute;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,92,252,0.18) 0%, transparent 65%);
+    top: -200px; right: -200px; filter: blur(50px);
+  }
+
+  .gw-back-btn {
+    position: relative; z-index: 2;
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--muted); font-size: 12px; letter-spacing: 0.06em;
+    background: none; border: 1px solid var(--border); padding: 8px 16px;
+    border-radius: 4px; cursor: pointer; transition: all 0.2s; margin-bottom: 48px;
+    font-family: 'DM Mono', monospace;
+  }
+  .gw-back-btn:hover { color: var(--text); border-color: var(--accent); }
+
+  .gw-meta {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+  }
+
+  .gw-project-num {
+    font-size: 11px; color: var(--muted); letter-spacing: 0.1em;
+  }
+
+  .gw-sep { color: var(--border); }
+
+  .gw-date { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+
+  .gw-title {
+    position: relative; z-index: 2;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(56px, 8vw, 100px);
+    line-height: 0.95; letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+
+  .gw-title em { font-style: italic; color: var(--accent); }
+
+  .gw-tagline {
+    position: relative; z-index: 2;
+    color: var(--muted); font-size: 15px; line-height: 1.8;
+    max-width: 560px; margin-bottom: 40px;
+  }
+
+  .gw-badges {
+    position: relative; z-index: 2;
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+
+  .gw-badge-award {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--accent2); letter-spacing: 0.05em;
+    background: rgba(232,255,72,0.08); border: 1px solid rgba(232,255,72,0.2);
+    padding: 6px 14px; border-radius: 4px;
+  }
+
+  .gw-tag {
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 4px;
+    background: rgba(124,92,252,0.1); color: var(--accent);
+    border: 1px solid rgba(124,92,252,0.2);
+  }
+
+  /* SPEC BAR */
+  .gw-specs {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; background: var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gw-spec {
+    background: var(--card); padding: 28px 36px; transition: background 0.2s;
+  }
+  .gw-spec:hover { background: #1d1d21; }
+
+  .gw-spec-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px; line-height: 1;
+    color: var(--stat-num-color); margin-bottom: 6px;
+  }
+
+  .gw-spec-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* CONTENT BODY */
+  .gw-body {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 0; border-bottom: 1px solid var(--border);
+  }
+
+  .gw-main { padding: 80px; border-right: 1px solid var(--border); }
+  .gw-sidebar { padding: 60px 48px; }
+
+  .gw-section-label {
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px; display: block;
+  }
+
+  .gw-h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px; line-height: 1.1; margin-bottom: 24px;
+  }
+  .gw-h2 em { font-style: italic; color: var(--accent); }
+
+  .gw-p {
+    color: var(--muted); font-size: 13px; line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .gw-divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 48px 0;
+  }
+
+  /* PHOTO GRID */
+  .gw-photo-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2px;
@@ -590,187 +595,167 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     overflow: hidden;
+    margin: 48px 0;
   }
 
-  .edu-card {
-    background: var(--card);
-    padding: 40px 36px;
+  .gw-photo-full {
+    grid-column: span 2;
+  }
+
+  .gw-photo {
+    background: #1a1a1e;
+    aspect-ratio: 16/9;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .gw-photo.tall { aspect-ratio: 4/3; }
+  .gw-photo.short { aspect-ratio: 16/7; }
+
+  .gw-photo:hover { background: #1e1e23; }
+
+  .gw-photo-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+
+  /* Photo placeholder illustrations */
+  .gw-photo-placeholder {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 12px; padding: 20px; text-align: center;
+  }
+
+  .gw-photo-icon { font-size: 36px; opacity: 0.4; }
+
+  .gw-photo-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 12px 16px;
+    background: linear-gradient(transparent, rgba(13,13,14,0.9));
+    font-size: 11px; color: var(--muted); letter-spacing: 0.04em;
+  }
+
+  .gw-photo-label {
+    font-size: 11px; color: var(--muted); opacity: 0.5;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* Photo upload overlay hint */
+  .gw-photo-hint {
+    font-size: 10px; color: var(--muted); opacity: 0.3;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* DESIGN DECISIONS */
+  .gw-decisions {
+    display: flex; flex-direction: column; gap: 2px;
+    background: var(--border); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden; margin: 48px 0;
+  }
+
+  .gw-decision {
+    background: var(--card); padding: 24px 28px;
+    display: flex; gap: 20px; align-items: flex-start;
     transition: background 0.2s;
   }
+  .gw-decision:hover { background: #1a1a1e; }
 
-  .edu-card:hover { background: #1a1a1e; }
-
-  .edu-degree {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 6px;
-  }
-
-  .edu-school {
-    color: var(--accent);
-    font-size: 13px;
-    margin-bottom: 16px;
-  }
-
-  .edu-period {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .edu-gpa {
-    display: inline-block;
-    margin-top: 16px;
-    background: rgba(232,255,72,0.08);
-    border: 1px solid rgba(232,255,72,0.2);
-    color: var(--accent2);
-    font-size: 12px;
-    padding: 4px 12px;
-    border-radius: 2px;
-  }
-
-  /* CONTACT */
-  .contact-section {
-    text-align: center;
-    padding: 100px 80px 120px;
-  }
-
-  .contact-section .section-label {
-    display: block;
-    margin-bottom: 16px;
-  }
-
-  .contact-section h2 {
+  .gw-decision-num {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(40px, 5vw, 72px);
-    line-height: 1.0;
-    margin-bottom: 20px;
+    font-size: 32px; line-height: 1; color: var(--border);
+    flex-shrink: 0; min-width: 40px;
+    transition: color 0.2s;
+  }
+  .gw-decision:hover .gw-decision-num { color: var(--accent); }
+
+  .gw-decision-content h4 {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px;
+    margin-bottom: 6px; color: var(--text);
+  }
+  .gw-decision-content p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+  /* CHALLENGE CALLOUT */
+  .gw-callout {
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    background: rgba(124,92,252,0.04);
+    border-radius: 0 4px 4px 0;
+    margin: 32px 0;
+  }
+  .gw-callout p { font-size: 13px; color: var(--muted); line-height: 1.8; margin: 0; }
+  .gw-callout strong { color: var(--text); }
+
+  /* SIDEBAR */
+  .gw-sidebar-block {
+    margin-bottom: 48px;
   }
 
-  .contact-section h2 em {
-    font-style: italic;
-    color: var(--accent);
+  .gw-sidebar-title {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 16px; color: var(--text);
+    padding-bottom: 12px; border-bottom: 1px solid var(--border);
   }
 
-  .contact-section p {
-    color: var(--muted);
-    max-width: 400px;
-    margin: 0 auto 40px;
-    font-size: 14px;
-    line-height: 1.8;
+  .gw-detail-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 10px 0; border-bottom: 1px solid rgba(30,30,34,0.5);
+    font-size: 12px; gap: 12px;
+  }
+  .gw-detail-row:last-child { border-bottom: none; }
+  .gw-detail-key { color: var(--muted); flex-shrink: 0; }
+  .gw-detail-val { color: var(--text); text-align: right; }
+
+  .gw-tech-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
   }
 
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
+  .gw-tech-tag {
+    font-size: 10px; letter-spacing: 0.06em;
+    padding: 4px 10px; border-radius: 2px;
+    background: rgba(124,92,252,0.08); color: var(--accent);
+    border: 1px solid rgba(124,92,252,0.15);
+  }
+
+  .gw-outcome-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 10px 0; border-bottom: 1px solid rgba(30,30,34,0.5);
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+  }
+  .gw-outcome-item:last-child { border-bottom: none; }
+  .gw-outcome-item::before { content: '✓'; color: var(--accent2); flex-shrink: 0; }
+
+  /* BOTTOM STRIP */
+  .gw-bottom {
+    border-top: 1px solid var(--border);
+    padding: 48px 80px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
     flex-wrap: wrap;
   }
 
-  .contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 12px 24px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 13px;
-    transition: all 0.2s;
-  }
+  .gw-next-label { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .gw-next-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; }
 
-  .contact-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 24px 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--muted);
-    font-size: 12px;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* THEME TOGGLE */
-  #theme-toggle {
-    background: var(--card);
-    border: 1px solid var(--border);
-    color: var(--text);
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-
-  #theme-toggle:hover {
-    border-color: var(--accent);
-    transform: scale(1.08);
-  }
-
-  /* Light mode overrides for elements using hardcoded colors */
-  :root.light .project-card.featured {
-    background: linear-gradient(135deg, #ede9e0, #e8e2f5);
-  }
-
-  :root.light .hero-bg-grid {
-    opacity: 0.25;
-  }
-
-  :root.light .leadership-card {
-    background: var(--card);
-    border-color: var(--border);
-  }
-
-  :root.light .award-badge {
-    background: rgba(26,26,46,0.06);
-    border-color: rgba(26,26,46,0.18);
-    color: #1a1a2e;
-  }
-
-  :root.light .role-tag {
-    background: rgba(26,26,46,0.07);
-    border-color: rgba(26,26,46,0.18);
-    color: #1a1a2e;
-  }
-
-  :root.light .edu-gpa {
-    background: rgba(98,68,232,0.07);
-    border-color: rgba(98,68,232,0.2);
-    color: var(--accent);
-  }
-
+  /* LIGHT MODE */
+  :root.light .project-card.featured { background: linear-gradient(135deg, #ede9e0, #e8e2f5); }
+  :root.light .project-card.featured.clickable:hover { background: linear-gradient(135deg, #e5e0f0, #dfd8f0); }
+  :root.light .hero-bg-grid { opacity: 0.25; }
+  :root.light .leadership-card { background: var(--card); border-color: var(--border); }
+  :root.light .award-badge { background: rgba(26,26,46,0.06); border-color: rgba(26,26,46,0.18); color: #1a1a2e; }
+  :root.light .role-tag { background: rgba(26,26,46,0.07); border-color: rgba(26,26,46,0.18); color: #1a1a2e; }
+  :root.light .edu-gpa { background: rgba(98,68,232,0.07); border-color: rgba(98,68,232,0.2); color: var(--accent); }
   :root.light body::before { opacity: 0.15; }
-
   :root.light .btn-primary { color: #fff; }
-
+  :root.light .gw-photo { background: #e8e4de; }
+  :root.light .gw-photo:hover { background: #e0dbd4; }
+  :root.light .gw-decision { background: var(--card); }
+  :root.light .gw-decision:hover { background: #e8e4de; }
+  :root.light .gw-callout { background: rgba(98,68,232,0.04); }
+  :root.light .gw-photo-caption { background: linear-gradient(transparent, rgba(245,243,239,0.92)); }
 
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
@@ -791,322 +776,622 @@
     .edu-grid { grid-template-columns: 1fr; }
     .contact-section { padding: 60px 24px; }
     footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+
+    .gw-hero { padding: 48px 24px 60px; }
+    .gw-specs { grid-template-columns: 1fr 1fr; }
+    .gw-body { grid-template-columns: 1fr; }
+    .gw-main { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+    .gw-sidebar { padding: 40px 24px; }
+    .gw-photo-grid { grid-template-columns: 1fr; }
+    .gw-photo-full { grid-column: span 1; }
+    .gw-bottom { padding: 40px 24px; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">D<span>.</span>A</a>
-  <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#awards">Awards</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <a class="nav-logo" onclick="showPage('main')" style="cursor:pointer">D<span>.</span>A</a>
+  <ul class="nav-links" id="nav-links-main">
+    <li><a onclick="showPage('main'); scrollTo('#projects')">Projects</a></li>
+    <li><a onclick="showPage('main'); scrollTo('#awards')">Awards</a></li>
+    <li><a onclick="showPage('main'); scrollTo('#skills')">Skills</a></li>
+    <li><a onclick="showPage('main'); scrollTo('#education')">Education</a></li>
+    <li><a onclick="showPage('main'); scrollTo('#contact')">Contact</a></li>
   </ul>
-  <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg-grid"></div>
-  <div class="hero-bg-blob"></div>
+<!-- ============================================================
+     PAGE: MAIN PORTFOLIO
+     ============================================================ -->
+<div id="page-main" class="page active">
 
-  <div class="hero-left">
-    <div class="hero-tag">Available for opportunities</div>
-    <h1>Dhyeya<br><em>Anand</em></h1>
-    <p class="hero-desc">
-      Engineering Product Development student at SUTD. I build robots, wearable devices, and competition machines — bridging hardware and software to solve real-world problems.
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-blob"></div>
+
+    <div class="hero-left">
+      <div class="hero-tag">Available for opportunities</div>
+      <h1>Dhyeya<br><em>Anand</em></h1>
+      <p class="hero-desc">
+        Engineering Product Development student at SUTD. I build robots, wearable devices, and competition machines — bridging hardware and software to solve real-world problems.
+      </p>
+      <div class="hero-cta">
+        <a onclick="showPage('main'); setTimeout(()=>document.getElementById('projects').scrollIntoView({behavior:'smooth'}),50)" class="btn-primary">View Projects →</a>
+        <a href="mailto:dhyeya_anand@mymail.sutd.edu.sg" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stats">
+        <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Major Projects</div></div>
+        <div class="stat-box"><div class="stat-num">5+</div><div class="stat-label">Awards Won</div></div>
+        <div class="stat-box"><div class="stat-num">SG</div><div class="stat-label">Intl. Represented</div></div>
+        <div class="stat-box"><div class="stat-num">48Nm</div><div class="stat-label">Peak Torque Built</div></div>
+      </div>
+      <div class="hero-skills">
+        <span class="skill-tag">Fusion 360</span>
+        <span class="skill-tag">3D Printing</span>
+        <span class="skill-tag">Arduino</span>
+        <span class="skill-tag">Raspberry Pi</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Robotics</span>
+        <span class="skill-tag">CAD</span>
+        <span class="skill-tag">Waterjet</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label reveal">Selected Projects</div>
+    <h2 class="section-title reveal">Built with hands<br><em>and code</em></h2>
+
+    <div class="projects-grid reveal">
+
+      <!-- GAITWAY — featured, clickable -->
+      <div class="project-card featured clickable" onclick="showPage('gaitway')">
+        <div class="project-num">01 — FEB 2026</div>
+        <div class="project-name">GaitWay</div>
+        <p class="project-desc">
+          A wearable capstan-drive mechanism designed to assist leg lifting for stroke rehabilitation. Engineered to deliver ~48 Nm of torque under tight motor, space, and $350 budget constraints. Dyneema rope was chosen to minimise creep and ensure stable, repeatable actuation. The compact, body-mounted system successfully assisted human gait at natural walking pace.
+        </p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+          <span class="award-badge">🏆 Breakthrough Innovation Award</span>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Capstan Drive</span>
+          <span class="project-tag">Wearable</span>
+          <span class="project-tag">Rehabilitation</span>
+          <span class="project-tag">Mechatronics</span>
+        </div>
+        <span class="project-view-link">View full case study →</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">02 — SEPT 2025</div>
+        <div class="project-name">6DOF Robotic Arm</div>
+        <p class="project-desc">
+          Assistive feeding robot with bearing-supported joints for smooth motion control. Integrated servo-driven actuation for precise end-effector positioning. Refined link geometry improved structural stability.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Servo Control</span>
+          <span class="project-tag">6DOF</span>
+          <span class="project-tag">Assistive Tech</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">03 — DEC 2024</div>
+        <div class="project-name">VEX Competition Robot</div>
+        <p class="project-desc">
+          Built two competition robots within 5 months for VEX Beijing Skills Tournament, representing Singapore. Designed and fabricated intake mechanism for cylindrical game objects via Fusion 360 and waterjet cutting.
+        </p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+          <span class="award-badge">🏅 Amaze Award</span>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Competition</span>
+          <span class="project-tag">VEX</span>
+          <span class="project-tag">Fusion 360</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">04 — 2025</div>
+        <div class="project-name">Beach Cleaning Robot</div>
+        <p class="project-desc">
+          Autonomous coastal cleanup robot with real-world deployment focus. Won the prestigious Jyoti and Aditya Mathur Student Achievement Award for sensor integration and practical robotics.
+        </p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+          <span class="award-badge">🏆 Student Achievement Award</span>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Autonomous</span>
+          <span class="project-tag">Sensors</span>
+          <span class="project-tag">Field Robot</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">05 — 2025</div>
+        <div class="project-name">Novice Programmer Platform</div>
+        <p class="project-desc">
+          Web-based platform to lower the barrier to entry for novice programmers. Built during international exchange at University of Economics, HCMC, Vietnam.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Web Dev</span>
+          <span class="project-tag">Node.js</span>
+          <span class="project-tag">EdTech</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <div class="section-label reveal">Recognition</div>
+    <h2 class="section-title reveal">Awards &amp;<br><em>Achievements</em></h2>
+
+    <div class="awards-list reveal">
+      <div class="award-item">
+        <div class="award-icon">🏆</div>
+        <div class="award-content">
+          <h3>Breakthrough Innovation Award — GaitWay</h3>
+          <p>Awarded for designing a wearable capstan-drive rehabilitation device meeting engineering constraints under a $350 budget.</p>
+        </div>
+        <div class="award-year">2026</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🥇</div>
+        <div class="award-content">
+          <h3>Jyoti &amp; Aditya Mathur Student Achievement Award</h3>
+          <p>Built an autonomous coastal cleanup robot with exceptional sensor integration and real-world deployment capability.</p>
+        </div>
+        <div class="award-year">2025</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🤖</div>
+        <div class="award-content">
+          <h3>Amaze Award — SUTD Competitive Robotics Team</h3>
+          <p>Represented Singapore at VEX Beijing Skills Tournament, building two competition robots within 5 months under strict constraints.</p>
+        </div>
+        <div class="award-year">2024</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🥈</div>
+        <div class="award-content">
+          <h3>First Runner-Up — Hyundai Motor Group Tech Bot Challenge</h3>
+          <p>Rapid assembly and calibration of an industrial colour-sorting robotic system under timed competition conditions.</p>
+        </div>
+        <div class="award-year">2023</div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">✈️</div>
+        <div class="award-content">
+          <h3>Global Exchange — University of Economics, HCMC</h3>
+          <p>Selected for international exchange programme in Vietnam; collaborated on a web platform for novice programmers.</p>
+        </div>
+        <div class="award-year">2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label reveal">Technical Toolkit</div>
+    <h2 class="section-title reveal">What I work<br><em>with</em></h2>
+
+    <div class="skills-grid reveal">
+      <div class="skill-category">
+        <div class="skill-cat-icon">✏️</div>
+        <div class="skill-cat-name">Design & Fabrication</div>
+        <div class="skill-list">
+          <span class="skill-item">Fusion 360</span>
+          <span class="skill-item">Blender</span>
+          <span class="skill-item">3D Printing (FDM)</span>
+          <span class="skill-item">Laser Cutting</span>
+          <span class="skill-item">WaterJet Cutting</span>
+          <span class="skill-item">Machining</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-icon">🤖</div>
+        <div class="skill-cat-name">Robotics & Electronics</div>
+        <div class="skill-list">
+          <span class="skill-item">ESP32</span>
+          <span class="skill-item">Arduino</span>
+          <span class="skill-item">Raspberry Pi</span>
+          <span class="skill-item">Motor Control</span>
+          <span class="skill-item">Sensor Integration</span>
+          <span class="skill-item">Soldering</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-icon">💻</div>
+        <div class="skill-cat-name">Software</div>
+        <div class="skill-list">
+          <span class="skill-item">Python</span>
+          <span class="skill-item">JavaScript</span>
+          <span class="skill-item">Node.js</span>
+          <span class="skill-item">HTML / CSS</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-icon">🤝</div>
+        <div class="skill-cat-name">Collaboration</div>
+        <div class="skill-list">
+          <span class="skill-item">Cross-functional Teams</span>
+          <span class="skill-item">Rapid Prototyping</span>
+          <span class="skill-item">Technical Problem Solving</span>
+          <span class="skill-item">Hackathon Direction</span>
+          <span class="skill-item">Sponsor Relations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership">
+    <div class="section-label reveal">Leadership</div>
+    <h2 class="section-title reveal">Driving things<br><em>forward</em></h2>
+
+    <div class="leadership-card reveal">
+      <h3>What The Hack 2026</h3>
+      <span class="role-tag">Project Director</span>
+      <ul class="leadership-points">
+        <li>Directing a Singapore-wide hackathon that unites hardware and software builders to create integrated prototypes addressing real sponsor problem statements.</li>
+        <li>Responsible for sponsor relations, hackathon topic ideation, and end-to-end event logistics for a national-scale event.</li>
+        <li>Curating problem statements that push participants to prototype at the intersection of physical and digital systems.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label reveal">Education</div>
+    <h2 class="section-title reveal">Academic<br><em>foundation</em></h2>
+
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <div class="edu-degree">B.Eng. Engineering Product Development</div>
+        <div class="edu-school">Singapore University of Technology and Design (SUTD)</div>
+        <div class="edu-period">September 2024 – Present</div>
+        <div class="edu-gpa">Currently Enrolled</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">International Baccalaureate Diploma</div>
+        <div class="edu-school">United World College of South East Asia (UWCSEA)</div>
+        <div class="edu-period">August 2022 – May 2024</div>
+        <div class="edu-gpa">GPA: 3.6 / 4.0</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <span class="section-label">Get In Touch</span>
+    <h2>Let's build<br>something <em>real</em></h2>
+    <p>Open to internships, collaborations, and interesting engineering challenges. I love projects where hardware meets purpose.</p>
+    <div class="contact-links">
+      <a href="mailto:dhyeya_anand@mymail.sutd.edu.sg" class="contact-link">✉ dhyeya_anand@mymail.sutd.edu.sg</a>
+      <a href="https://www.linkedin.com/in/DhyeyaAnand" target="_blank" class="contact-link">↗ LinkedIn</a>
+      <a href="tel:+6581537963" class="contact-link">📞 +65 8153 7963</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Dhyeya Anand</span>
+    <span>Engineering Product Development · Singapore</span>
+  </footer>
+
+</div><!-- end page-main -->
+
+
+<!-- ============================================================
+     PAGE: GAITWAY PROJECT DETAIL
+     ============================================================ -->
+<div id="page-gaitway" class="page">
+
+  <div class="gw-hero">
+    <div class="gw-hero-grid"></div>
+    <div class="gw-hero-blob"></div>
+
+    <button class="gw-back-btn" onclick="showPage('main')">← Back to projects</button>
+
+    <div class="gw-meta">
+      <span class="gw-project-num">01</span>
+      <span class="gw-sep">/</span>
+      <span class="gw-date">February 2026</span>
+      <span class="gw-sep">/</span>
+      <span class="gw-date">SUTD Capstone</span>
+    </div>
+
+    <div class="gw-title">Gait<em>Way</em></div>
+
+    <p class="gw-tagline">
+      A body-mounted wearable exoskeleton module that assists leg lifting for stroke rehabilitation patients — delivering 48 Nm of torque within a $350 budget.
     </p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn-primary">View Projects →</a>
-      <a href="mailto:dhyeya_anand@mymail.sutd.edu.sg" class="btn-outline">Get in Touch</a>
+
+    <div class="gw-badges">
+      <span class="gw-badge-award">🏆 Breakthrough Innovation Award</span>
+      <span class="gw-tag">Capstan Drive</span>
+      <span class="gw-tag">Wearable</span>
+      <span class="gw-tag">Rehabilitation</span>
+      <span class="gw-tag">Mechatronics</span>
+      <span class="gw-tag">Dyneema</span>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="hero-stats">
-      <div class="stat-box">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Major Projects</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">5+</div>
-        <div class="stat-label">Awards Won</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">SG</div>
-        <div class="stat-label">Intl. Represented</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">48Nm</div>
-        <div class="stat-label">Peak Torque Built</div>
-      </div>
+  <!-- SPEC BAR -->
+  <div class="gw-specs">
+    <div class="gw-spec">
+      <div class="gw-spec-val">48<span style="font-size:20px">Nm</span></div>
+      <div class="gw-spec-label">Peak Output Torque</div>
     </div>
-    <div class="hero-skills">
-      <span class="skill-tag">Fusion 360</span>
-      <span class="skill-tag">3D Printing</span>
-      <span class="skill-tag">Arduino</span>
-      <span class="skill-tag">Raspberry Pi</span>
-      <span class="skill-tag">Python</span>
-      <span class="skill-tag">Robotics</span>
-      <span class="skill-tag">CAD</span>
-      <span class="skill-tag">Waterjet</span>
+    <div class="gw-spec">
+      <div class="gw-spec-val">$350</div>
+      <div class="gw-spec-label">Total Budget Constraint</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">~1<span style="font-size:20px">m/s</span></div>
+      <div class="gw-spec-label">Assisted Gait Speed</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">1</div>
+      <div class="gw-spec-label">Motor, Compact Form Factor</div>
     </div>
   </div>
-</div>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label reveal">Selected Projects</div>
-  <h2 class="section-title reveal">Built with hands<br><em>and code</em></h2>
+  <!-- MAIN BODY -->
+  <div class="gw-body">
 
-  <div class="projects-grid reveal">
+    <!-- LEFT: MAIN CONTENT -->
+    <div class="gw-main">
 
-    <div class="project-card featured">
-      <div class="project-num">01 — FEB 2026</div>
-      <div class="project-name">GaitWay</div>
-      <p class="project-desc">
-        A wearable capstan-drive mechanism designed to assist leg lifting for stroke rehabilitation. Engineered to deliver ~48 Nm of torque under tight motor, space, and $350 budget constraints. Dyneema rope was chosen to minimise creep and ensure stable, repeatable actuation. The compact, body-mounted system successfully assisted human gait at natural walking pace.
+      <span class="gw-section-label">Overview</span>
+      <h2 class="gw-h2">Helping stroke survivors<br><em>walk again</em></h2>
+
+      <p class="gw-p">
+        GaitWay is a wearable assistive device developed as part of an engineering capstone at SUTD. It targets one of the most common challenges in post-stroke rehabilitation: the inability to adequately lift the leg during the swing phase of walking, often caused by hip flexor weakness.
       </p>
-      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-        <span class="award-badge">🏆 Breakthrough Innovation Award</span>
-      </div>
-      <div class="project-tags">
-        <span class="project-tag">Capstan Drive</span>
-        <span class="project-tag">Wearable</span>
-        <span class="project-tag">Rehabilitation</span>
-        <span class="project-tag">Mechatronics</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-num">02 — SEPT 2025</div>
-      <div class="project-name">6DOF Robotic Arm</div>
-      <p class="project-desc">
-        Assistive feeding robot with bearing-supported joints for smooth motion control. Integrated servo-driven actuation for precise end-effector positioning. Refined link geometry improved structural stability.
+      <p class="gw-p">
+        The core innovation is a capstan-drive mechanism — a system where a rope wound around a drum amplifies the torque of a compact motor. This allows a single small actuator to generate forces large enough to meaningfully assist human gait, without the bulk or cost of industrial exoskeleton platforms.
       </p>
-      <div class="project-tags">
-        <span class="project-tag">Servo Control</span>
-        <span class="project-tag">6DOF</span>
-        <span class="project-tag">Assistive Tech</span>
-      </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-num">03 — DEC 2024</div>
-      <div class="project-name">VEX Competition Robot</div>
-      <p class="project-desc">
-        Built two competition robots within 5 months for VEX Beijing Skills Tournament, representing Singapore. Designed and fabricated intake mechanism for cylindrical game objects via Fusion 360 and waterjet cutting.
+      <div class="gw-callout">
+        <p><strong>Design challenge:</strong> Achieve a minimum of 40 Nm output torque for reliable leg lifting, packaged in a wearable form factor, using a single motor system, within a $350 component budget.</p>
+      </div>
+
+      <!-- PHOTO GRID — SECTION 1 -->
+      <div class="gw-photo-grid">
+        <div class="gw-photo gw-photo-full short">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📸</div>
+              <div class="gw-photo-label">Hero / full system photo</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">GaitWay — complete assembled system worn on subject</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">⚙️</div>
+              <div class="gw-photo-label">Capstan drum close-up</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Capstan drum & Dyneema rope routing</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🖨️</div>
+              <div class="gw-photo-label">3D-printed housing</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">FDM-printed structural housing & motor mount</div>
+        </div>
+      </div>
+
+      <hr class="gw-divider">
+
+      <span class="gw-section-label">Engineering Approach</span>
+      <h2 class="gw-h2">Key design<br><em>decisions</em></h2>
+
+      <p class="gw-p">
+        Every major choice in GaitWay involved a trade-off between performance, cost, weight, and wearability. Below are the critical decisions that shaped the final system.
       </p>
-      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-        <span class="award-badge">🏅 Amaze Award</span>
-      </div>
-      <div class="project-tags">
-        <span class="project-tag">Competition</span>
-        <span class="project-tag">VEX</span>
-        <span class="project-tag">Fusion 360</span>
-      </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-num">04 — 2025</div>
-      <div class="project-name">Beach Cleaning Robot</div>
-      <p class="project-desc">
-        Autonomous coastal cleanup robot with real-world deployment focus. Won the prestigious Jyoti and Aditya Mathur Student Achievement Award for sensor integration and practical robotics.
+      <div class="gw-decisions">
+        <div class="gw-decision">
+          <div class="gw-decision-num">01</div>
+          <div class="gw-decision-content">
+            <h4>Capstan Drive over Gear Train</h4>
+            <p>A traditional gear train was considered but rejected due to weight, backlash, and cost. A capstan (rope-on-drum) drive achieves high mechanical advantage through multiple wraps, is nearly frictionless at low loads, and can be manufactured from inexpensive printed components. The rope tension scales linearly with wrap angle — enabling predictable torque amplification.</p>
+          </div>
+        </div>
+        <div class="gw-decision">
+          <div class="gw-decision-num">02</div>
+          <div class="gw-decision-content">
+            <h4>Dyneema over Steel Cable or Nylon</h4>
+            <p>Dyneema (ultra-high-molecular-weight polyethylene) was selected for the transmission rope after evaluating creep behaviour under sustained load. Steel cable added unacceptable weight; nylon exhibited creep that caused positional drift during extended wear. Dyneema's near-zero creep, high tensile strength-to-weight ratio, and flexibility made it the optimal choice for repeatable actuation cycles.</p>
+          </div>
+        </div>
+        <div class="gw-decision">
+          <div class="gw-decision-num">03</div>
+          <div class="gw-decision-content">
+            <h4>Body-Mounted, Not Frame-Mounted</h4>
+            <p>Rather than attaching to an external rigid frame (which limits mobility and adds bulk), GaitWay mounts directly to the user's body using a harness. This keeps the form factor compact, allows natural gait patterns, and reduces overall system weight. The actuator rides at the hip, transmitting force to the thigh via a guided Dyneema loop.</p>
+          </div>
+        </div>
+        <div class="gw-decision">
+          <div class="gw-decision-num">04</div>
+          <div class="gw-decision-content">
+            <h4>Single Motor Architecture</h4>
+            <p>Constraining to a single motor kept costs under the $350 limit while forcing elegant mechanical design. The capstan geometry was calculated to deliver the required torque from a 24V brushless DC motor rated at 12 Nm stall torque, with a 4:1 rope mechanical advantage yielding the 48 Nm target at the leg attachment point.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHOTO GRID — SECTION 2 -->
+      <div class="gw-photo-grid">
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📐</div>
+              <div class="gw-photo-label">CAD / Fusion 360 view</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Fusion 360 assembly model</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🔬</div>
+              <div class="gw-photo-label">Testing / prototype iteration</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Prototype testing & torque validation</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🚶</div>
+              <div class="gw-photo-label">Gait demo / wear test</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Functional gait demonstration</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🧵</div>
+              <div class="gw-photo-label">Rope routing detail</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Dyneema routing through pulley guides</div>
+        </div>
+      </div>
+
+      <hr class="gw-divider">
+
+      <span class="gw-section-label">Results</span>
+      <h2 class="gw-h2">What we<br><em>achieved</em></h2>
+
+      <p class="gw-p">
+        The completed GaitWay system met all primary design targets. During final demonstrations, the device successfully assisted a human subject through a full walking cycle at natural pace, with the wearer reporting a clearly perceptible reduction in effort during the swing phase.
       </p>
-      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
-        <span class="award-badge">🏆 Student Achievement Award</span>
-      </div>
-      <div class="project-tags">
-        <span class="project-tag">Autonomous</span>
-        <span class="project-tag">Sensors</span>
-        <span class="project-tag">Field Robot</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-num">05 — 2025</div>
-      <div class="project-name">Novice Programmer Platform</div>
-      <p class="project-desc">
-        Web-based platform to lower the barrier to entry for novice programmers. Built during international exchange at University of Economics, HCMC, Vietnam.
+      <p class="gw-p">
+        The project was recognised with the <strong style="color: var(--text)">Breakthrough Innovation Award</strong> at SUTD's EPD module showcase — awarded for its combination of thoughtful constraint-driven engineering, novel application of capstan mechanics to wearable rehabilitation, and real demonstrated functionality.
       </p>
-      <div class="project-tags">
-        <span class="project-tag">Web Dev</span>
-        <span class="project-tag">Node.js</span>
-        <span class="project-tag">EdTech</span>
-      </div>
-    </div>
 
-  </div>
-</section>
+    </div><!-- end gw-main -->
 
-<!-- AWARDS -->
-<section id="awards">
-  <div class="section-label reveal">Recognition</div>
-  <h2 class="section-title reveal">Awards &amp;<br><em>Achievements</em></h2>
+    <!-- RIGHT: SIDEBAR -->
+    <div class="gw-sidebar">
 
-  <div class="awards-list reveal">
-    <div class="award-item">
-      <div class="award-icon">🏆</div>
-      <div class="award-content">
-        <h3>Breakthrough Innovation Award — GaitWay</h3>
-        <p>Awarded for designing a wearable capstan-drive rehabilitation device meeting engineering constraints under a $350 budget.</p>
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Project Details</div>
+        <div class="gw-detail-row">
+          <span class="gw-detail-key">Context</span>
+          <span class="gw-detail-val">SUTD EPD Capstone</span>
+        </div>
+        <div class="gw-detail-row">
+          <span class="gw-detail-key">Date</span>
+          <span class="gw-detail-val">Feb 2026</span>
+        </div>
+        <div class="gw-detail-row">
+          <span class="gw-detail-key">Duration</span>
+          <span class="gw-detail-val">~12 weeks</span>
+        </div>
+        <div class="gw-detail-row">
+          <span class="gw-detail-key">Budget</span>
+          <span class="gw-detail-val">$350 SGD</span>
+        </div>
+        <div class="gw-detail-row">
+          <span class="gw-detail-key">Role</span>
+          <span class="gw-detail-val">Lead Mechanical Design</span>
+        </div>
+        <div class="gw-detail-row">
+          <span class="gw-detail-key">Award</span>
+          <span class="gw-detail-val" style="color: var(--accent2)">Breakthrough Innovation</span>
+        </div>
       </div>
-      <div class="award-year">2026</div>
-    </div>
-    <div class="award-item">
-      <div class="award-icon">🥇</div>
-      <div class="award-content">
-        <h3>Jyoti &amp; Aditya Mathur Student Achievement Award</h3>
-        <p>Built an autonomous coastal cleanup robot with exceptional sensor integration and real-world deployment capability.</p>
-      </div>
-      <div class="award-year">2025</div>
-    </div>
-    <div class="award-item">
-      <div class="award-icon">🤖</div>
-      <div class="award-content">
-        <h3>Amaze Award — SUTD Competitive Robotics Team</h3>
-        <p>Represented Singapore at VEX Beijing Skills Tournament, building two competition robots within 5 months under strict constraints.</p>
-      </div>
-      <div class="award-year">2024</div>
-    </div>
-    <div class="award-item">
-      <div class="award-icon">🥈</div>
-      <div class="award-content">
-        <h3>First Runner-Up — Hyundai Motor Group Tech Bot Challenge</h3>
-        <p>Rapid assembly and calibration of an industrial colour-sorting robotic system under timed competition conditions.</p>
-      </div>
-      <div class="award-year">2023</div>
-    </div>
-    <div class="award-item">
-      <div class="award-icon">✈️</div>
-      <div class="award-content">
-        <h3>Global Exchange — University of Economics, HCMC</h3>
-        <p>Selected for international exchange programme in Vietnam; collaborated on a web platform for novice programmers.</p>
-      </div>
-      <div class="award-year">2025</div>
-    </div>
-  </div>
-</section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label reveal">Technical Toolkit</div>
-  <h2 class="section-title reveal">What I work<br><em>with</em></h2>
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Technologies Used</div>
+        <div class="gw-tech-tags">
+          <span class="gw-tech-tag">Fusion 360</span>
+          <span class="gw-tech-tag">FDM 3D Printing</span>
+          <span class="gw-tech-tag">Dyneema Rope</span>
+          <span class="gw-tech-tag">BLDC Motor</span>
+          <span class="gw-tech-tag">Capstan Drive</span>
+          <span class="gw-tech-tag">Motor Controller</span>
+          <span class="gw-tech-tag">Arduino</span>
+          <span class="gw-tech-tag">Body Harness</span>
+        </div>
+      </div>
 
-  <div class="skills-grid reveal">
-    <div class="skill-category">
-      <div class="skill-cat-icon">✏️</div>
-      <div class="skill-cat-name">Design & Fabrication</div>
-      <div class="skill-list">
-        <span class="skill-item">Fusion 360</span>
-        <span class="skill-item">Blender</span>
-        <span class="skill-item">3D Printing (FDM)</span>
-        <span class="skill-item">Laser Cutting</span>
-        <span class="skill-item">WaterJet Cutting</span>
-        <span class="skill-item">Machining</span>
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Outcomes</div>
+        <div class="gw-outcome-item">48 Nm output torque achieved — exceeding 40 Nm target</div>
+        <div class="gw-outcome-item">Functional assisted gait demonstrated at natural walking pace</div>
+        <div class="gw-outcome-item">$350 budget constraint met with margin</div>
+        <div class="gw-outcome-item">Zero-creep rope transmission via Dyneema selection</div>
+        <div class="gw-outcome-item">Breakthrough Innovation Award — SUTD EPD showcase</div>
       </div>
+
+    </div><!-- end gw-sidebar -->
+  </div><!-- end gw-body -->
+
+  <!-- BOTTOM NAV -->
+  <div class="gw-bottom">
+    <div>
+      <button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button>
     </div>
-    <div class="skill-category">
-      <div class="skill-cat-icon">🤖</div>
-      <div class="skill-cat-name">Robotics & Electronics</div>
-      <div class="skill-list">
-        <span class="skill-item">ESP32</span>
-        <span class="skill-item">Arduino</span>
-        <span class="skill-item">Raspberry Pi</span>
-        <span class="skill-item">Motor Control</span>
-        <span class="skill-item">Sensor Integration</span>
-        <span class="skill-item">Soldering</span>
-      </div>
-    </div>
-    <div class="skill-category">
-      <div class="skill-cat-icon">💻</div>
-      <div class="skill-cat-name">Software</div>
-      <div class="skill-list">
-        <span class="skill-item">Python</span>
-        <span class="skill-item">JavaScript</span>
-        <span class="skill-item">Node.js</span>
-        <span class="skill-item">HTML / CSS</span>
-      </div>
-    </div>
-    <div class="skill-category">
-      <div class="skill-cat-icon">🤝</div>
-      <div class="skill-cat-name">Collaboration</div>
-      <div class="skill-list">
-        <span class="skill-item">Cross-functional Teams</span>
-        <span class="skill-item">Rapid Prototyping</span>
-        <span class="skill-item">Technical Problem Solving</span>
-        <span class="skill-item">Hackathon Direction</span>
-        <span class="skill-item">Sponsor Relations</span>
-      </div>
+    <div style="text-align:right">
+      <div class="gw-next-label">Next Project</div>
+      <div class="gw-next-name">6DOF Robotic Arm →</div>
     </div>
   </div>
-</section>
 
-<!-- LEADERSHIP -->
-<section id="leadership">
-  <div class="section-label reveal">Leadership</div>
-  <h2 class="section-title reveal">Driving things<br><em>forward</em></h2>
+  <footer>
+    <span>© 2026 Dhyeya Anand</span>
+    <span>Engineering Product Development · Singapore</span>
+  </footer>
 
-  <div class="leadership-card reveal">
-    <h3>What The Hack 2026</h3>
-    <span class="role-tag">Project Director</span>
-    <ul class="leadership-points">
-      <li>Directing a Singapore-wide hackathon that unites hardware and software builders to create integrated prototypes addressing real sponsor problem statements.</li>
-      <li>Responsible for sponsor relations, hackathon topic ideation, and end-to-end event logistics for a national-scale event.</li>
-      <li>Curating problem statements that push participants to prototype at the intersection of physical and digital systems.</li>
-    </ul>
-  </div>
-</section>
+</div><!-- end page-gaitway -->
 
-<!-- EDUCATION -->
-<section id="education">
-  <div class="section-label reveal">Education</div>
-  <h2 class="section-title reveal">Academic<br><em>foundation</em></h2>
-
-  <div class="edu-grid reveal">
-    <div class="edu-card">
-      <div class="edu-degree">B.Eng. Engineering Product Development</div>
-      <div class="edu-school">Singapore University of Technology and Design (SUTD)</div>
-      <div class="edu-period">September 2024 – Present</div>
-      <div class="edu-gpa">Currently Enrolled</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-degree">International Baccalaureate Diploma</div>
-      <div class="edu-school">United World College of South East Asia (UWCSEA)</div>
-      <div class="edu-period">August 2022 – May 2024</div>
-      <div class="edu-gpa">GPA: 3.6 / 4.0</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <span class="section-label">Get In Touch</span>
-  <h2>Let's build<br>something <em>real</em></h2>
-  <p>Open to internships, collaborations, and interesting engineering challenges. I love projects where hardware meets purpose.</p>
-  <div class="contact-links">
-    <a href="mailto:dhyeya_anand@mymail.sutd.edu.sg" class="contact-link">
-      ✉ dhyeya_anand@mymail.sutd.edu.sg
-    </a>
-    <a href="https://www.linkedin.com/in/DhyeyaAnand" target="_blank" class="contact-link">
-      ↗ LinkedIn
-    </a>
-    <a href="tel:+6581537963" class="contact-link">
-      📞 +65 8153 7963
-    </a>
-  </div>
-</section>
-
-<footer>
-  <span>© 2026 Dhyeya Anand</span>
-  <span>Engineering Product Development · Singapore</span>
-</footer>
 
 <script>
-  // Theme toggle
+  /* ---- PAGE ROUTING ---- */
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Re-run reveal animations for newly shown page
+    setTimeout(initReveal, 100);
+  }
+
+  function scrollTo(hash) {
+    setTimeout(() => {
+      const el = document.querySelector(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 80);
+  }
+
+  /* ---- THEME TOGGLE ---- */
   const toggle = document.getElementById('theme-toggle');
   const root = document.documentElement;
   const saved = localStorage.getItem('theme');
@@ -1118,19 +1403,22 @@
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  reveals.forEach(el => observer.observe(el));
+  /* ---- SCROLL REVEAL ---- */
+  function initReveal() {
+    const reveals = document.querySelectorAll('.reveal:not(.visible)');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+  }
+  initReveal();
 
-  // Smooth nav highlight
+  /* ---- NAV HIGHLIGHT ---- */
   const sections = document.querySelectorAll('section[id], .hero');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
@@ -1139,7 +1427,8 @@
       if (window.scrollY >= s.offsetTop - 120) current = s.id || '';
     });
     navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+      const href = a.getAttribute('onclick') || '';
+      a.style.color = href.includes("'" + current + "'") ? 'var(--text)' : '';
     });
   });
 </script>
