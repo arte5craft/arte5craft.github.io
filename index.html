@@ -828,6 +828,8 @@
       <div class="hero-stats">
         <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Major Projects</div></div>
         <div class="stat-box"><div class="stat-num">5+</div><div class="stat-label">Awards Won</div></div>
+        <div class="stat-box"><div class="stat-num">SG</div><div class="stat-label">Intl. Represented</div></div>
+        <div class="stat-box"><div class="stat-num">48Nm</div><div class="stat-label">Peak Torque Built</div></div>
       </div>
       <div class="hero-skills">
         <span class="skill-tag">Fusion 360</span>
@@ -868,7 +870,7 @@
         <span class="project-view-link">View full case study →</span>
       </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" style="cursor:pointer" onclick="showPage('6dof')">
         <div class="project-num">02 — SEPT 2025</div>
         <div class="project-name">6DOF Robotic Arm</div>
         <p class="project-desc">
@@ -879,9 +881,10 @@
           <span class="project-tag">6DOF</span>
           <span class="project-tag">Assistive Tech</span>
         </div>
+        <span class="project-view-link">View project →</span>
       </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" style="cursor:pointer" onclick="showPage('vex')">
         <div class="project-num">03 — DEC 2024</div>
         <div class="project-name">VEX Competition Robot</div>
         <p class="project-desc">
@@ -895,6 +898,7 @@
           <span class="project-tag">VEX</span>
           <span class="project-tag">Fusion 360</span>
         </div>
+        <span class="project-view-link">View full case study →</span>
       </div>
 
       <div class="project-card">
@@ -1116,15 +1120,18 @@
 
     <div class="gw-badges">
       <span class="gw-badge-award">🏆 Breakthrough Innovation Award</span>
-      <span class="gw-tag">Medical Wearable</span>
+      <span class="gw-tag">Capstan Drive</span>
+      <span class="gw-tag">Wearable</span>
       <span class="gw-tag">Rehabilitation</span>
+      <span class="gw-tag">Mechatronics</span>
+      <span class="gw-tag">Dyneema</span>
     </div>
   </div>
 
   <!-- SPEC BAR -->
   <div class="gw-specs">
     <div class="gw-spec">
-      <div class="gw-spec-val">32<span style="font-size:20px">Nm</span></div>
+      <div class="gw-spec-val">48<span style="font-size:20px">Nm</span></div>
       <div class="gw-spec-label">Peak Output Torque</div>
     </div>
     <div class="gw-spec">
@@ -1132,12 +1139,12 @@
       <div class="gw-spec-label">Total Budget Constraint</div>
     </div>
     <div class="gw-spec">
-      <div class="gw-spec-val">~Walking Speed<span style="font-size:20px"></span></div>
+      <div class="gw-spec-val">~1<span style="font-size:20px">m/s</span></div>
       <div class="gw-spec-label">Assisted Gait Speed</div>
     </div>
     <div class="gw-spec">
-      <div class="gw-spec-val">1 NEMA 23 Stepper Motor</div>
-      <div class="gw-spec-label">Torque of 3Nm</div>
+      <div class="gw-spec-val">1</div>
+      <div class="gw-spec-label">Motor, Compact Form Factor</div>
     </div>
   </div>
 
@@ -1148,10 +1155,10 @@
     <div class="gw-main">
 
       <span class="gw-section-label">Overview</span>
-      <h2 class="gw-h2">Helping stroke survivors<br><em>walk again independently and inexpensively</em></h2>
+      <h2 class="gw-h2">Helping stroke survivors<br><em>walk again</em></h2>
 
       <p class="gw-p">
-        GaitWay is a wearable assistive device developed as part of one of the projects at SUTD. It targets one of the most common challenges in post-stroke rehabilitation: the inability to adequately lift the leg during the swing phase of walking, often caused by hip flexor weakness.
+        GaitWay is a wearable assistive device developed as part of an engineering capstone at SUTD. It targets one of the most common challenges in post-stroke rehabilitation: the inability to adequately lift the leg during the swing phase of walking, often caused by hip flexor weakness.
       </p>
       <p class="gw-p">
         The core innovation is a capstan-drive mechanism — a system where a rope wound around a drum amplifies the torque of a compact motor. This allows a single small actuator to generate forces large enough to meaningfully assist human gait, without the bulk or cost of industrial exoskeleton platforms.
@@ -1288,7 +1295,7 @@
         The completed GaitWay system met all primary design targets. During final demonstrations, the device successfully assisted a human subject through a full walking cycle at natural pace, with the wearer reporting a clearly perceptible reduction in effort during the swing phase.
       </p>
       <p class="gw-p">
-        The project was recognised with the <strong style="color: var(--text)">Breakthrough Innovation Award</strong> at SUTD's EPD Term 4 showcase — awarded for its combination of thoughtful constraint-driven engineering, novel application of capstan mechanics to wearable rehabilitation, and real demonstrated functionality.
+        The project was recognised with the <strong style="color: var(--text)">Breakthrough Innovation Award</strong> at SUTD's EPD module showcase — awarded for its combination of thoughtful constraint-driven engineering, novel application of capstan mechanics to wearable rehabilitation, and real demonstrated functionality.
       </p>
 
     </div><!-- end gw-main -->
@@ -1300,7 +1307,7 @@
         <div class="gw-sidebar-title">Project Details</div>
         <div class="gw-detail-row">
           <span class="gw-detail-key">Context</span>
-          <span class="gw-detail-val">SUTD EPD Showcase</span>
+          <span class="gw-detail-val">SUTD EPD Capstone</span>
         </div>
         <div class="gw-detail-row">
           <span class="gw-detail-key">Date</span>
@@ -1316,7 +1323,7 @@
         </div>
         <div class="gw-detail-row">
           <span class="gw-detail-key">Role</span>
-          <span class="gw-detail-val">Lead Mechanical Design and Motor Control</span>
+          <span class="gw-detail-val">Lead Mechanical Design</span>
         </div>
         <div class="gw-detail-row">
           <span class="gw-detail-key">Award</span>
@@ -1329,16 +1336,18 @@
         <div class="gw-tech-tags">
           <span class="gw-tech-tag">Fusion 360</span>
           <span class="gw-tech-tag">FDM 3D Printing</span>
-          <span class="gw-tech-tag">Stepper Motor</span>
-          <span class="gw-tech-tag">Capstan Drive Reduction</span>
+          <span class="gw-tech-tag">Dyneema Rope</span>
+          <span class="gw-tech-tag">BLDC Motor</span>
+          <span class="gw-tech-tag">Capstan Drive</span>
+          <span class="gw-tech-tag">Motor Controller</span>
           <span class="gw-tech-tag">Arduino</span>
-          <span class="gw-tech-tag">ESP32</span>
+          <span class="gw-tech-tag">Body Harness</span>
         </div>
       </div>
 
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Outcomes</div>
-        <div class="gw-outcome-item">32 Nm output torque achieved</div>
+        <div class="gw-outcome-item">48 Nm output torque achieved — exceeding 40 Nm target</div>
         <div class="gw-outcome-item">Functional assisted gait demonstrated at natural walking pace</div>
         <div class="gw-outcome-item">$350 budget constraint met with margin</div>
         <div class="gw-outcome-item">Zero-creep rope transmission via Dyneema selection</div>
@@ -1365,6 +1374,458 @@
   </footer>
 
 </div><!-- end page-gaitway -->
+
+
+<!-- ============================================================
+     PAGE: VEX COMPETITION ROBOT
+     ============================================================ -->
+<div id="page-vex" class="page">
+
+  <div class="gw-hero">
+    <div class="gw-hero-grid"></div>
+    <div class="gw-hero-blob" style="background: radial-gradient(circle, rgba(232,255,72,0.12) 0%, transparent 65%);"></div>
+
+    <button class="gw-back-btn" onclick="showPage('main')">← Back to projects</button>
+
+    <div class="gw-meta">
+      <span class="gw-project-num">03</span>
+      <span class="gw-sep">/</span>
+      <span class="gw-date">2024 – 2025 Season</span>
+      <span class="gw-sep">/</span>
+      <span class="gw-date">SUTD Competitive Robotics · Team SCRT1</span>
+    </div>
+
+    <div class="gw-title" style="font-size: clamp(40px, 6vw, 80px);">VEX <em>Push</em><br>Back</div>
+
+    <p class="gw-tagline">
+      Two competition robots — codenamed Jetson & Huang — built for the 2025–26 VEX V5RC Push Back season. Computer vision, pneumatic magazines, and a fully iterative design process across 5 months of development.
+    </p>
+
+    <div class="gw-badges">
+      <span class="gw-badge-award">🏅 Amaze Award — SUTD</span>
+      <span class="gw-tag">VEX V5RC</span>
+      <span class="gw-tag">Computer Vision</span>
+      <span class="gw-tag">Pneumatics</span>
+      <span class="gw-tag">Autonomous</span>
+      <span class="gw-tag">Fusion 360</span>
+      <span class="gw-tag">Jetson Nano</span>
+    </div>
+  </div>
+
+  <!-- SPEC BAR -->
+  <div class="gw-specs">
+    <div class="gw-spec">
+      <div class="gw-spec-val">2</div>
+      <div class="gw-spec-label">Competition Robots Built</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">~5<span style="font-size:20px">mo</span></div>
+      <div class="gw-spec-label">Build-to-Competition Timeline</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">90<span style="font-size:20px">fps</span></div>
+      <div class="gw-spec-label">CV Camera Frame Rate</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">20+</div>
+      <div class="gw-spec-label">Smart Ports in Use</div>
+    </div>
+  </div>
+
+  <!-- MAIN BODY -->
+  <div class="gw-body">
+
+    <div class="gw-main">
+
+      <span class="gw-section-label">Overview</span>
+      <h2 class="gw-h2">Two robots,<br><em>one season</em></h2>
+
+      <p class="gw-p">
+        Team SCRT1 is SUTD's university-level competitive robotics team, founded in 2023 to bring VEX U competition to Singapore at the university scale. The 2025–26 Push Back season saw the team build two distinct robots from scratch — a 15" robot (Jetson) and a 24" robot (Huang) — each with modular subsystems developed through rapid iteration across hardware, software, and strategy teams.
+      </p>
+      <p class="gw-p">
+        Push Back is a game centred around scoring cylindrical blocks into long goals and an elevated centre goal, with significant points awarded for autonomous performance and strategic descoring. The team's target was to build a robot capable of holding 8–14 blocks, securing the long goal, and running a reliable autonomous routine using computer vision.
+      </p>
+
+      <div class="gw-callout">
+        <p><strong>Season targets:</strong> Hold ≥8 blocks (optimal 14), secure the long goal, achieve a reliable autonomous win with computer vision block detection, and compete at the Singapore V5RC Tournament and Asia Open Signature Event.</p>
+      </div>
+
+      <!-- PHOTO GRID 1 -->
+      <div class="gw-photo-grid">
+        <div class="gw-photo gw-photo-full short">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📸</div>
+              <div class="gw-photo-label">Both robots — Jetson & Huang</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Jetson (15") & Huang (24") — the two SCRT1 Push Back robots</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">⚙️</div>
+              <div class="gw-photo-label">Magazine assembly</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">V4 roller magazine with pneumatic upper section</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">👁️</div>
+              <div class="gw-photo-label">Computer vision / camera setup</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Global shutter camera + Jetson Nano CV pipeline</div>
+        </div>
+      </div>
+
+      <hr class="gw-divider">
+
+      <span class="gw-section-label">Subsystem Development</span>
+      <h2 class="gw-h2">How the robot<br><em>came together</em></h2>
+
+      <p class="gw-p">
+        Every major subsystem went through multiple design iterations, with the team logging decisions, failures, and fixes in this engineering notebook. Below are the four core systems and the key engineering choices made.
+      </p>
+
+      <div class="gw-decisions">
+        <div class="gw-decision">
+          <div class="gw-decision-num">01</div>
+          <div class="gw-decision-content">
+            <h4>Magazine — V1 through V4</h4>
+            <p>The magazine (block storage and scoring system) was the most iterated subsystem. Early dual-magazine designs were scrapped because they couldn't fit within the 15" robot envelope. The final design uses a roller-coaster layout inspired by competitive teams: 4 small rollers (50mm), 1 large roller (90mm, also the hinge point), and an indexer roller for controlled release. The upper section is pneumatically actuated via a 50mm piston, reaching either the long goal or the centre upper goal. A passive end-flap prevents blocks from escaping while scoring.</p>
+          </div>
+        </div>
+        <div class="gw-decision">
+          <div class="gw-decision-num">02</div>
+          <div class="gw-decision-content">
+            <h4>Computer Vision — Jetson Nano + Global Shutter Camera</h4>
+            <p>The initial VEX AI camera was plagued by motion blur and rolling shutter artefacts, causing the robot to "go blind" during fast movements. The team switched to a USB global shutter camera running at 90 FPS with a 160° FOV. A custom calibration GUI was built to streamline homography and distortion correction for both robots. A Jetson Nano runs the detection pipeline, communicating with the V5 brain over TTL. Final CV latency: ~100ms — a major improvement over the original system.</p>
+          </div>
+        </div>
+        <div class="gw-decision">
+          <div class="gw-decision-num">03</div>
+          <div class="gw-decision-content">
+            <h4>The Yoinker — A Late Addition</h4>
+            <p>With the hardware team insisting development was frozen, the software lead advocated for a last-minute tool to drag blocks from the parking zone during skills runs — dubbed the "Yoinker." V1 used a slim 2mm PETG L-bracket that proved too fragile. V2 thickened it to 7mm, embedded the nylock nut, and shifted the pivot point 20mm rearward to clear intake interference. It was retained on the robot for the Singapore V5RC Tournament skills run.</p>
+          </div>
+        </div>
+        <div class="gw-decision">
+          <div class="gw-decision-num">04</div>
+          <div class="gw-decision-content">
+            <h4>Drivetrain & Tracking Wheels</h4>
+            <p>The base runs 10 × 11W motors in the drive. Tracking wheels for odometry initially used a double-row 2" omni wheel split in half — which repeatedly snapped the plastic shaft on the parking zone lip. The fix: a purpose-built single-row omni wheel with a stainless steel high-strength shaft replacing the plastic one. A VEX IMU and two rotation sensors complete the localisation system.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHOTO GRID 2 -->
+      <div class="gw-photo-grid">
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📐</div>
+              <div class="gw-photo-label">CAD model / Fusion 360</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Fusion 360 assembly — magazine & base</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🤖</div>
+              <div class="gw-photo-label">Singapore V5RC Tournament</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Singapore V5RC Tournament — skills run</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🛠️</div>
+              <div class="gw-photo-label">Build / workshop photo</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Team SCRT1 in the workshop</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🏟️</div>
+              <div class="gw-photo-label">Asia Open / competition floor</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Asia Open Signature Event preparation</div>
+        </div>
+      </div>
+
+      <hr class="gw-divider">
+
+      <span class="gw-section-label">Competition Results</span>
+      <h2 class="gw-h2">On the<br><em>field</em></h2>
+
+      <p class="gw-p">
+        At the Singapore V5RC Tournament in November 2025 — the team's first external competition run — SCRT1 scored 20 points in autonomous programming skills and 72 in driver skills, placing around 5th at the time of posting. As the only VEXU team in Singapore, the team ran their skills challenge within the MS/HS competition timeframe, with only a tight 45-minute window to clock their runs.
+      </p>
+      <p class="gw-p">
+        Post-tournament development focused on fixing CV reliability under different lighting conditions, improving intake consistency, and preparing both robots for the Asia Open Signature Event in December 2025. The team also ran two full scrimmages against teams from Innovac Makerspace (including 8068E) to sharpen driver practice and strategy before the trip.
+      </p>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="gw-sidebar">
+
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Project Details</div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Team</span><span class="gw-detail-val">SCRT1 — SUTD</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Season</span><span class="gw-detail-val">2025–26 Push Back</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Robots</span><span class="gw-detail-val">Jetson (15") & Huang (24")</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Timeline</span><span class="gw-detail-val">~5 months</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Competitions</span><span class="gw-detail-val">SG V5RC · Asia Open</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Award</span><span class="gw-detail-val" style="color: var(--accent2)">Amaze Award — SUTD</span></div>
+      </div>
+
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Technologies Used</div>
+        <div class="gw-tech-tags">
+          <span class="gw-tech-tag">Fusion 360</span>
+          <span class="gw-tech-tag">VEX V5 Brain</span>
+          <span class="gw-tech-tag">Jetson Nano</span>
+          <span class="gw-tech-tag">Computer Vision</span>
+          <span class="gw-tech-tag">Pneumatics</span>
+          <span class="gw-tech-tag">PROS C++</span>
+          <span class="gw-tech-tag">Waterjet Cutting</span>
+          <span class="gw-tech-tag">3D Printing</span>
+          <span class="gw-tech-tag">PETG / PC Sheet</span>
+          <span class="gw-tech-tag">Global Shutter Cam</span>
+        </div>
+      </div>
+
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Key Stats</div>
+        <div class="gw-outcome-item">72 pts driver skills at Singapore V5RC</div>
+        <div class="gw-outcome-item">20 pts autonomous programming skills</div>
+        <div class="gw-outcome-item">~100ms CV detection latency</div>
+        <div class="gw-outcome-item">Magazine V1 → V4 iteration cycle</div>
+        <div class="gw-outcome-item">Sponsored by DSO, EspressIf & PolyMate</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gw-bottom">
+    <div>
+      <button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button>
+    </div>
+    <div style="text-align:right">
+      <div class="gw-next-label">Next Project</div>
+      <div class="gw-next-name" style="cursor:pointer" onclick="showPage('6dof')">6DOF Robotic Arm →</div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Dhyeya Anand</span>
+    <span>Engineering Product Development · Singapore</span>
+  </footer>
+
+</div><!-- end page-vex -->
+
+
+<!-- ============================================================
+     PAGE: 6DOF ROBOTIC ARM
+     ============================================================ -->
+<div id="page-6dof" class="page">
+
+  <div class="gw-hero">
+    <div class="gw-hero-grid"></div>
+    <div class="gw-hero-blob" style="background: radial-gradient(circle, rgba(100,220,180,0.12) 0%, transparent 65%);"></div>
+
+    <button class="gw-back-btn" onclick="showPage('main')">← Back to projects</button>
+
+    <div class="gw-meta">
+      <span class="gw-project-num">02</span>
+      <span class="gw-sep">/</span>
+      <span class="gw-date">September 2025</span>
+      <span class="gw-sep">/</span>
+      <span class="gw-date">SUTD EPD Module</span>
+    </div>
+
+    <div class="gw-title">6<em>DOF</em><br>Arm</div>
+
+    <p class="gw-tagline">
+      An assistive feeding robot with six degrees of freedom. Bearing-supported joints, servo-driven actuation, and refined link geometry for stable, precise end-effector positioning.
+    </p>
+
+    <div class="gw-badges">
+      <span class="gw-tag">6DOF</span>
+      <span class="gw-tag">Servo Control</span>
+      <span class="gw-tag">Assistive Tech</span>
+      <span class="gw-tag">Bearings</span>
+      <span class="gw-tag">CAD</span>
+    </div>
+  </div>
+
+  <!-- SPEC BAR -->
+  <div class="gw-specs">
+    <div class="gw-spec">
+      <div class="gw-spec-val">6</div>
+      <div class="gw-spec-label">Degrees of Freedom</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">6+</div>
+      <div class="gw-spec-label">Servo Actuators</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">360°</div>
+      <div class="gw-spec-label">End-Effector Reach</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">Sept<br><span style="font-size:16px">2025</span></div>
+      <div class="gw-spec-label">Completed</div>
+    </div>
+  </div>
+
+  <div class="gw-body">
+
+    <div class="gw-main">
+
+      <span class="gw-section-label">Overview</span>
+      <h2 class="gw-h2">Assistive feeding<br><em>through robotics</em></h2>
+
+      <p class="gw-p">
+        This 6-degrees-of-freedom robotic arm was designed as an assistive feeding device — intended to help users with limited upper-limb mobility perform the repetitive task of bringing food to their mouth. The design emphasis was on smooth, predictable motion and structural stability, making it safe and reliable in close proximity to a person.
+      </p>
+
+      <div class="gw-callout">
+        <p><strong>Design focus:</strong> Bearing-supported joints at every axis for smooth, low-friction motion — eliminating the wobble that plagues servo-direct-drive arms. Refined link geometry to improve structural stiffness and reduce flex under load.</p>
+      </div>
+
+      <!-- PHOTO GRID -->
+      <div class="gw-photo-grid">
+        <div class="gw-photo gw-photo-full short">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📸</div>
+              <div class="gw-photo-label">Full arm — assembled</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">6DOF arm — fully assembled</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🔩</div>
+              <div class="gw-photo-label">Joint / bearing close-up</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Bearing-supported joint detail</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🦾</div>
+              <div class="gw-photo-label">End-effector / gripper</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">End-effector positioning</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📐</div>
+              <div class="gw-photo-label">CAD / Fusion 360</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Fusion 360 assembly model</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🖨️</div>
+              <div class="gw-photo-label">3D printed parts / links</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">FDM-printed link geometry</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🎬</div>
+              <div class="gw-photo-label">Motion / demo photo</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Arm in motion — feeding demonstration</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gw-sidebar">
+
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Project Details</div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Context</span><span class="gw-detail-val">SUTD EPD Module</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Date</span><span class="gw-detail-val">Sept 2025</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">DOF</span><span class="gw-detail-val">6</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Application</span><span class="gw-detail-val">Assistive Feeding</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Actuation</span><span class="gw-detail-val">Servo-driven</span></div>
+      </div>
+
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Technologies Used</div>
+        <div class="gw-tech-tags">
+          <span class="gw-tech-tag">Fusion 360</span>
+          <span class="gw-tech-tag">FDM 3D Printing</span>
+          <span class="gw-tech-tag">Servo Motors</span>
+          <span class="gw-tech-tag">Bearings</span>
+          <span class="gw-tech-tag">Arduino</span>
+          <span class="gw-tech-tag">Inverse Kinematics</span>
+        </div>
+      </div>
+
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Key Outcomes</div>
+        <div class="gw-outcome-item">Bearing-supported joints at all 6 axes — smooth, low-friction motion</div>
+        <div class="gw-outcome-item">Refined link geometry reduced structural flex under load</div>
+        <div class="gw-outcome-item">Precise end-effector positioning for feeding task</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gw-bottom">
+    <div>
+      <button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button>
+    </div>
+    <div style="text-align:right">
+      <div class="gw-next-label">Previous Project</div>
+      <div class="gw-next-name" style="cursor:pointer" onclick="showPage('vex')">← VEX Push Back</div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Dhyeya Anand</span>
+    <span>Engineering Product Development · Singapore</span>
+  </footer>
+
+</div><!-- end page-6dof -->
 
 
 <script>
