@@ -901,7 +901,7 @@
         <span class="project-view-link">View full case study →</span>
       </div>
 
-      <div class="project-card">
+      <div class="project-card clickable" style="cursor:pointer" onclick="showPage('beach')">
         <div class="project-num">04 — 2025</div>
         <div class="project-name">Beach Cleaning Robot</div>
         <p class="project-desc">
@@ -915,6 +915,7 @@
           <span class="project-tag">Sensors</span>
           <span class="project-tag">Field Robot</span>
         </div>
+        <span class="project-view-link">View project →</span>
       </div>
 
       <div class="project-card">
@@ -1826,6 +1827,192 @@
   </footer>
 
 </div><!-- end page-6dof -->
+
+
+<!-- ============================================================
+     PAGE: BEACH CLEANING ROBOT
+     ============================================================ -->
+<div id="page-beach" class="page">
+
+  <div class="gw-hero">
+    <div class="gw-hero-grid"></div>
+    <div class="gw-hero-blob" style="background: radial-gradient(circle, rgba(72,200,255,0.12) 0%, transparent 65%);"></div>
+
+    <button class="gw-back-btn" onclick="showPage('main')">← Back to projects</button>
+
+    <div class="gw-meta">
+      <span class="gw-project-num">04</span>
+      <span class="gw-sep">/</span>
+      <span class="gw-date">2025</span>
+      <span class="gw-sep">/</span>
+      <span class="gw-date">SUTD EPD Module</span>
+    </div>
+
+    <div class="gw-title" style="font-size: clamp(36px, 5.5vw, 76px);">Beach <em>Clean</em><br>Robot</div>
+
+    <p class="gw-tagline">
+      An autonomous coastal cleanup robot built for real-world deployment. Sensor integration for debris detection and navigation, winning the Jyoti &amp; Aditya Mathur Student Achievement Award.
+    </p>
+
+    <div class="gw-badges">
+      <span class="gw-badge-award">🏆 Jyoti &amp; Aditya Mathur Student Achievement Award</span>
+      <span class="gw-tag">Autonomous</span>
+      <span class="gw-tag">Sensors</span>
+      <span class="gw-tag">Field Robot</span>
+      <span class="gw-tag">Raspberry Pi</span>
+    </div>
+  </div>
+
+  <!-- SPEC BAR -->
+  <div class="gw-specs">
+    <div class="gw-spec">
+      <div class="gw-spec-val">🏆</div>
+      <div class="gw-spec-label">Student Achievement Award</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">Auto</div>
+      <div class="gw-spec-label">Autonomous Navigation</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">Field</div>
+      <div class="gw-spec-label">Real-World Deployment</div>
+    </div>
+    <div class="gw-spec">
+      <div class="gw-spec-val">2025</div>
+      <div class="gw-spec-label">Completed</div>
+    </div>
+  </div>
+
+  <div class="gw-body">
+
+    <div class="gw-main">
+
+      <span class="gw-section-label">Overview</span>
+      <h2 class="gw-h2">Cleaning coastlines<br><em>autonomously</em></h2>
+
+      <p class="gw-p">
+        This autonomous beach cleaning robot was designed with real-world coastal deployment in mind — not just a lab prototype. The robot uses onboard sensors to detect and navigate towards debris, collect it, and continue along the beach without human intervention.
+      </p>
+      <p class="gw-p">
+        The project was recognised with the <strong style="color:var(--text)">Jyoti &amp; Aditya Mathur Student Achievement Award</strong> at SUTD, specifically cited for its sensor integration quality and the practicality of its deployment approach.
+      </p>
+
+      <!-- PHOTO GRID — 6 slots for your photos -->
+      <div class="gw-photo-grid">
+        <div class="gw-photo gw-photo-full short">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📸</div>
+              <div class="gw-photo-label">Full robot — hero shot</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Beach Cleaning Robot — fully assembled</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🔬</div>
+              <div class="gw-photo-label">Sensor array / electronics</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Sensor integration & electronics</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🏖️</div>
+              <div class="gw-photo-label">Field deployment / beach test</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Field deployment test on beach terrain</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📐</div>
+              <div class="gw-photo-label">CAD / design view</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">CAD model / design</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🛠️</div>
+              <div class="gw-photo-label">Build / workshop</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Build process</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🏆</div>
+              <div class="gw-photo-label">Award / presentation</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Student Achievement Award presentation</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gw-sidebar">
+
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Project Details</div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Context</span><span class="gw-detail-val">SUTD EPD Module</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Date</span><span class="gw-detail-val">2025</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Type</span><span class="gw-detail-val">Autonomous Field Robot</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Environment</span><span class="gw-detail-val">Coastal / Beach</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Award</span><span class="gw-detail-val" style="color:var(--accent2)">Student Achievement Award</span></div>
+      </div>
+
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Technologies Used</div>
+        <div class="gw-tech-tags">
+          <span class="gw-tech-tag">Raspberry Pi</span>
+          <span class="gw-tech-tag">Arduino</span>
+          <span class="gw-tech-tag">Sensor Integration</span>
+          <span class="gw-tech-tag">Autonomous Nav</span>
+          <span class="gw-tech-tag">Python</span>
+          <span class="gw-tech-tag">Fusion 360</span>
+          <span class="gw-tech-tag">3D Printing</span>
+        </div>
+      </div>
+
+      <div class="gw-sidebar-block">
+        <div class="gw-sidebar-title">Key Outcomes</div>
+        <div class="gw-outcome-item">Autonomous debris detection & navigation</div>
+        <div class="gw-outcome-item">Real-world field deployment on beach terrain</div>
+        <div class="gw-outcome-item">Jyoti & Aditya Mathur Student Achievement Award</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gw-bottom">
+    <div>
+      <button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button>
+    </div>
+    <div style="text-align:right">
+      <div class="gw-next-label">Previous Project</div>
+      <div class="gw-next-name" style="cursor:pointer" onclick="showPage('6dof')">← 6DOF Robotic Arm</div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Dhyeya Anand</span>
+    <span>Engineering Product Development · Singapore</span>
+  </footer>
+
+</div><!-- end page-beach -->
 
 
 <script>
