@@ -57,11 +57,9 @@
     opacity: 0.4;
   }
 
-  /* PAGE SYSTEM */
   .page { display: none; }
   .page.active { display: block; }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -86,12 +84,7 @@
   }
   .nav-logo span { color: var(--accent); }
 
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
+  .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a {
     color: var(--muted);
     text-decoration: none;
@@ -119,7 +112,6 @@
   }
   #theme-toggle:hover { border-color: var(--accent); transform: scale(1.08); }
 
-  /* HERO */
   .hero {
     min-height: 100vh;
     display: grid;
@@ -130,8 +122,7 @@
   }
 
   .hero-bg-grid {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background-image:
       linear-gradient(var(--border) 1px, transparent 1px),
       linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -194,10 +185,7 @@
     animation: fadeUp 0.8s 0.2s ease both;
   }
 
-  .hero-cta {
-    display: flex; gap: 16px;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
+  .hero-cta { display: flex; gap: 16px; animation: fadeUp 0.8s 0.3s ease both; }
 
   .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
@@ -236,9 +224,7 @@
     overflow: hidden; margin-bottom: 24px;
   }
 
-  .stat-box {
-    background: var(--card); padding: 28px 24px; transition: background 0.2s;
-  }
+  .stat-box { background: var(--card); padding: 28px 24px; transition: background 0.2s; }
   .stat-box:hover { background: #1d1d21; }
 
   .stat-num {
@@ -249,14 +235,12 @@
   .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
   .hero-skills { display: flex; flex-wrap: wrap; gap: 8px; }
-
   .skill-tag {
     border: 1px solid var(--border); padding: 6px 12px; border-radius: 4px;
     font-size: 11px; color: var(--muted); letter-spacing: 0.05em; transition: all 0.2s;
   }
   .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* SECTIONS */
   section { padding: 100px 80px; border-top: 1px solid var(--border); }
 
   .section-label {
@@ -270,7 +254,6 @@
   }
   .section-title em { font-style: italic; color: var(--accent); }
 
-  /* PROJECTS */
   .projects-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 2px; background: var(--border);
@@ -294,14 +277,8 @@
     grid-column: span 2;
     background: linear-gradient(135deg, #17171a, #1a1520);
   }
-
-  /* Clickable featured card */
-  .project-card.featured.clickable {
-    cursor: pointer;
-  }
-  .project-card.featured.clickable:hover {
-    background: linear-gradient(135deg, #1d1b24, #211830);
-  }
+  .project-card.featured.clickable { cursor: pointer; }
+  .project-card.featured.clickable:hover { background: linear-gradient(135deg, #1d1b24, #211830); }
 
   .project-view-link {
     display: inline-flex; align-items: center; gap: 6px;
@@ -312,15 +289,9 @@
   .project-card:hover .project-view-link { gap: 10px; }
 
   .project-num { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
-
-  .project-name {
-    font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.2;
-  }
-
+  .project-name { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; line-height: 1.2; }
   .project-desc { color: var(--muted); font-size: 13px; line-height: 1.7; flex: 1; }
-
   .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
-
   .project-tag {
     font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
     padding: 4px 10px; border-radius: 2px;
@@ -335,44 +306,34 @@
     padding: 4px 10px; border-radius: 2px;
   }
 
-  /* AWARDS */
   .awards-list {
     display: flex; flex-direction: column; gap: 2px;
     background: var(--border); border: 1px solid var(--border);
     border-radius: 8px; overflow: hidden;
   }
-
   .award-item {
     background: var(--card); padding: 28px 32px;
     display: flex; align-items: flex-start; gap: 24px; transition: background 0.2s;
   }
   .award-item:hover { background: #1a1a1e; }
-
   .award-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
-
   .award-content h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
   .award-content p { color: var(--muted); font-size: 13px; line-height: 1.6; }
-
   .award-year { margin-left: auto; font-size: 11px; color: var(--muted); flex-shrink: 0; padding-top: 3px; }
 
-  /* SKILLS */
   .skills-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 2px; background: var(--border);
     border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
   }
-
   .skill-category { background: var(--card); padding: 32px 28px; transition: background 0.2s; }
   .skill-category:hover { background: #1a1a1e; }
-
   .skill-cat-icon { font-size: 24px; margin-bottom: 16px; }
   .skill-cat-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 16px; color: var(--text); }
-
   .skill-list { display: flex; flex-direction: column; gap: 6px; }
   .skill-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
   .skill-item::before { content: '—'; color: var(--accent); flex-shrink: 0; }
 
-  /* LEADERSHIP */
   .leadership-card {
     background: var(--card); border: 1px solid var(--border);
     border-radius: 8px; padding: 40px; position: relative; overflow: hidden;
@@ -393,7 +354,6 @@
   .leadership-points li { display: flex; gap: 12px; color: var(--muted); font-size: 13px; line-height: 1.6; }
   .leadership-points li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
 
-  /* EDUCATION */
   .edu-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 2px; background: var(--border);
@@ -410,7 +370,6 @@
     color: var(--accent2); font-size: 12px; padding: 4px 12px; border-radius: 2px;
   }
 
-  /* CONTACT */
   .contact-section { text-align: center; padding: 100px 80px 120px; }
   .contact-section .section-label { display: block; margin-bottom: 16px; }
   .contact-section h2 {
@@ -419,7 +378,6 @@
   }
   .contact-section h2 em { font-style: italic; color: var(--accent); }
   .contact-section p { color: var(--muted); max-width: 400px; margin: 0 auto 40px; font-size: 14px; line-height: 1.8; }
-
   .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
   .contact-link {
     display: inline-flex; align-items: center; gap: 8px;
@@ -439,38 +397,25 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .reveal {
-    opacity: 0; transform: translateY(32px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ============================================================
-     GAITWAY PROJECT PAGE
+     PROJECT DETAIL PAGES — SHARED STYLES
      ============================================================ */
 
-  #page-gaitway {
-    padding-top: 80px;
-    min-height: 100vh;
-    animation: fadeUp 0.6s ease both;
-  }
-
   .gw-hero {
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
     padding: 80px 80px 100px;
     border-bottom: 1px solid var(--border);
   }
-
   .gw-hero-grid {
     position: absolute; inset: 0;
     background-image:
       linear-gradient(var(--border) 1px, transparent 1px),
       linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-    opacity: 0.3;
+    background-size: 60px 60px; opacity: 0.3;
   }
-
   .gw-hero-blob {
     position: absolute;
     width: 700px; height: 700px; border-radius: 50%;
@@ -492,23 +437,16 @@
     position: relative; z-index: 2;
     display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
   }
-
-  .gw-project-num {
-    font-size: 11px; color: var(--muted); letter-spacing: 0.1em;
-  }
-
+  .gw-project-num { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
   .gw-sep { color: var(--border); }
-
   .gw-date { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
 
   .gw-title {
     position: relative; z-index: 2;
     font-family: 'DM Serif Display', serif;
     font-size: clamp(56px, 8vw, 100px);
-    line-height: 0.95; letter-spacing: -0.03em;
-    margin-bottom: 32px;
+    line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 32px;
   }
-
   .gw-title em { font-style: italic; color: var(--accent); }
 
   .gw-tagline {
@@ -517,18 +455,13 @@
     max-width: 560px; margin-bottom: 40px;
   }
 
-  .gw-badges {
-    position: relative; z-index: 2;
-    display: flex; flex-wrap: wrap; gap: 10px;
-  }
-
+  .gw-badges { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 10px; }
   .gw-badge-award {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 11px; color: var(--accent2); letter-spacing: 0.05em;
     background: rgba(232,255,72,0.08); border: 1px solid rgba(232,255,72,0.2);
     padding: 6px 14px; border-radius: 4px;
   }
-
   .gw-tag {
     font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
     padding: 6px 12px; border-radius: 4px;
@@ -536,32 +469,24 @@
     border: 1px solid rgba(124,92,252,0.2);
   }
 
-  /* SPEC BAR */
   .gw-specs {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 2px; background: var(--border);
     border-bottom: 1px solid var(--border);
   }
-
-  .gw-spec {
-    background: var(--card); padding: 28px 36px; transition: background 0.2s;
-  }
+  .gw-spec { background: var(--card); padding: 28px 36px; transition: background 0.2s; }
   .gw-spec:hover { background: #1d1d21; }
-
   .gw-spec-val {
     font-family: 'DM Serif Display', serif;
     font-size: 36px; line-height: 1;
     color: var(--stat-num-color); margin-bottom: 6px;
   }
-
   .gw-spec-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
 
-  /* CONTENT BODY */
   .gw-body {
     display: grid; grid-template-columns: 2fr 1fr;
     gap: 0; border-bottom: 1px solid var(--border);
   }
-
   .gw-main { padding: 80px; border-right: 1px solid var(--border); }
   .gw-sidebar { padding: 60px 48px; }
 
@@ -569,38 +494,18 @@
     font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--accent); margin-bottom: 16px; display: block;
   }
-
-  .gw-h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 32px; line-height: 1.1; margin-bottom: 24px;
-  }
+  .gw-h2 { font-family: 'DM Serif Display', serif; font-size: 32px; line-height: 1.1; margin-bottom: 24px; }
   .gw-h2 em { font-style: italic; color: var(--accent); }
+  .gw-p { color: var(--muted); font-size: 13px; line-height: 1.9; margin-bottom: 20px; }
+  .gw-divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
 
-  .gw-p {
-    color: var(--muted); font-size: 13px; line-height: 1.9;
-    margin-bottom: 20px;
-  }
-
-  .gw-divider {
-    border: none; border-top: 1px solid var(--border);
-    margin: 48px 0;
-  }
-
-  /* PHOTO GRID */
   .gw-photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    margin: 48px 0;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden; margin: 48px 0;
   }
-
-  .gw-photo-full {
-    grid-column: span 2;
-  }
+  .gw-photo-full { grid-column: span 2; }
 
   .gw-photo {
     background: #1a1a1e;
@@ -610,10 +515,9 @@
     position: relative; overflow: hidden;
     transition: background 0.3s;
   }
-
   .gw-photo.tall { aspect-ratio: 4/3; }
   .gw-photo.short { aspect-ratio: 16/7; }
-
+  .gw-photo.portrait { aspect-ratio: 3/4; }
   .gw-photo:hover { background: #1e1e23; }
 
   .gw-photo-inner {
@@ -622,14 +526,21 @@
     position: relative;
   }
 
-  /* Photo placeholder illustrations */
+  /* Images inside photo slots fill the container */
+  .gw-photo-inner img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+
   .gw-photo-placeholder {
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     gap: 12px; padding: 20px; text-align: center;
+    width: 100%; height: 100%;
   }
-
   .gw-photo-icon { font-size: 36px; opacity: 0.4; }
+  .gw-photo-label { font-size: 11px; color: var(--muted); opacity: 0.5; letter-spacing: 0.06em; text-transform: uppercase; }
+  .gw-photo-hint { font-size: 10px; color: var(--muted); opacity: 0.3; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 6px; }
 
   .gw-photo-caption {
     position: absolute; bottom: 0; left: 0; right: 0;
@@ -638,47 +549,25 @@
     font-size: 11px; color: var(--muted); letter-spacing: 0.04em;
   }
 
-  .gw-photo-label {
-    font-size: 11px; color: var(--muted); opacity: 0.5;
-    letter-spacing: 0.06em; text-transform: uppercase;
-  }
-
-  /* Photo upload overlay hint */
-  .gw-photo-hint {
-    font-size: 10px; color: var(--muted); opacity: 0.3;
-    letter-spacing: 0.05em; text-transform: uppercase;
-    margin-top: 6px;
-  }
-
-  /* DESIGN DECISIONS */
   .gw-decisions {
     display: flex; flex-direction: column; gap: 2px;
     background: var(--border); border: 1px solid var(--border);
     border-radius: 8px; overflow: hidden; margin: 48px 0;
   }
-
   .gw-decision {
     background: var(--card); padding: 24px 28px;
-    display: flex; gap: 20px; align-items: flex-start;
-    transition: background 0.2s;
+    display: flex; gap: 20px; align-items: flex-start; transition: background 0.2s;
   }
   .gw-decision:hover { background: #1a1a1e; }
-
   .gw-decision-num {
     font-family: 'DM Serif Display', serif;
     font-size: 32px; line-height: 1; color: var(--border);
-    flex-shrink: 0; min-width: 40px;
-    transition: color 0.2s;
+    flex-shrink: 0; min-width: 40px; transition: color 0.2s;
   }
   .gw-decision:hover .gw-decision-num { color: var(--accent); }
-
-  .gw-decision-content h4 {
-    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px;
-    margin-bottom: 6px; color: var(--text);
-  }
+  .gw-decision-content h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 6px; color: var(--text); }
   .gw-decision-content p { font-size: 12px; color: var(--muted); line-height: 1.7; }
 
-  /* CHALLENGE CALLOUT */
   .gw-callout {
     border-left: 3px solid var(--accent);
     padding: 20px 24px;
@@ -689,18 +578,13 @@
   .gw-callout p { font-size: 13px; color: var(--muted); line-height: 1.8; margin: 0; }
   .gw-callout strong { color: var(--text); }
 
-  /* SIDEBAR */
-  .gw-sidebar-block {
-    margin-bottom: 48px;
-  }
-
+  .gw-sidebar-block { margin-bottom: 48px; }
   .gw-sidebar-title {
     font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px;
     text-transform: uppercase; letter-spacing: 0.08em;
     margin-bottom: 16px; color: var(--text);
     padding-bottom: 12px; border-bottom: 1px solid var(--border);
   }
-
   .gw-detail-row {
     display: flex; justify-content: space-between; align-items: flex-start;
     padding: 10px 0; border-bottom: 1px solid rgba(30,30,34,0.5);
@@ -710,10 +594,7 @@
   .gw-detail-key { color: var(--muted); flex-shrink: 0; }
   .gw-detail-val { color: var(--text); text-align: right; }
 
-  .gw-tech-tags {
-    display: flex; flex-wrap: wrap; gap: 6px;
-  }
-
+  .gw-tech-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .gw-tech-tag {
     font-size: 10px; letter-spacing: 0.06em;
     padding: 4px 10px; border-radius: 2px;
@@ -729,14 +610,12 @@
   .gw-outcome-item:last-child { border-bottom: none; }
   .gw-outcome-item::before { content: '✓'; color: var(--accent2); flex-shrink: 0; }
 
-  /* BOTTOM STRIP */
   .gw-bottom {
     border-top: 1px solid var(--border);
     padding: 48px 80px;
     display: flex; align-items: center; justify-content: space-between; gap: 24px;
     flex-wrap: wrap;
   }
-
   .gw-next-label { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
   .gw-next-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; }
 
@@ -762,7 +641,6 @@
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
 
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
@@ -776,7 +654,6 @@
     .edu-grid { grid-template-columns: 1fr; }
     .contact-section { padding: 60px 24px; }
     footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
-
     .gw-hero { padding: 48px 24px 60px; }
     .gw-specs { grid-template-columns: 1fr 1fr; }
     .gw-body { grid-template-columns: 1fr; }
@@ -791,8 +668,8 @@
 <body>
 
 <nav>
-  <a class="nav-logo" onclick="showPage('main')" style="cursor:pointer">D<span>.</span>A</a>
-  <ul class="nav-links" id="nav-links-main">
+  <a class="nav-logo" onclick="showPage('main')">D<span>.</span>A</a>
+  <ul class="nav-links">
     <li><a onclick="showPage('main'); scrollTo('#projects')">Projects</a></li>
     <li><a onclick="showPage('main'); scrollTo('#awards')">Awards</a></li>
     <li><a onclick="showPage('main'); scrollTo('#skills')">Skills</a></li>
@@ -807,7 +684,6 @@
      ============================================================ -->
 <div id="page-main" class="page active">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-bg-grid"></div>
     <div class="hero-bg-blob"></div>
@@ -826,10 +702,10 @@
 
     <div class="hero-right">
       <div class="hero-stats">
-        <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Major Projects</div></div>
+        <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">Major Projects</div></div>
         <div class="stat-box"><div class="stat-num">5+</div><div class="stat-label">Awards Won</div></div>
         <div class="stat-box"><div class="stat-num">SG</div><div class="stat-label">Intl. Represented</div></div>
-        <div class="stat-box"><div class="stat-num">48Nm</div><div class="stat-label">Peak Torque Built</div></div>
+        <div class="stat-box"><div class="stat-num">32Nm</div><div class="stat-label">Peak Torque Built</div></div>
       </div>
       <div class="hero-skills">
         <span class="skill-tag">Fusion 360</span>
@@ -844,19 +720,17 @@
     </div>
   </div>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <div class="section-label reveal">Selected Projects</div>
     <h2 class="section-title reveal">Built with hands<br><em>and code</em></h2>
 
     <div class="projects-grid reveal">
 
-      <!-- GAITWAY — featured, clickable -->
       <div class="project-card featured clickable" onclick="showPage('gaitway')">
         <div class="project-num">01 — FEB 2026</div>
         <div class="project-name">GaitWay</div>
         <p class="project-desc">
-          A wearable capstan-drive mechanism designed to assist leg lifting for stroke rehabilitation. Engineered to deliver ~48 Nm of torque under tight motor, space, and $350 budget constraints. Dyneema rope was chosen to minimise creep and ensure stable, repeatable actuation. The compact, body-mounted system successfully assisted human gait at natural walking pace.
+          A wearable capstan-drive mechanism designed to assist leg lifting for stroke rehabilitation. Engineered to deliver ~32 Nm of torque under tight motor, space, and $350 budget constraints. Dyneema rope was chosen to minimise creep and ensure stable, repeatable actuation. The compact, body-mounted system successfully assisted human gait at natural walking pace.
         </p>
         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
           <span class="award-badge">🏆 Breakthrough Innovation Award</span>
@@ -870,7 +744,7 @@
         <span class="project-view-link">View full case study →</span>
       </div>
 
-      <div class="project-card clickable" style="cursor:pointer" onclick="showPage('6dof')">
+      <div class="project-card clickable" onclick="showPage('6dof')">
         <div class="project-num">02 — SEPT 2025</div>
         <div class="project-name">6DOF Robotic Arm</div>
         <p class="project-desc">
@@ -884,11 +758,11 @@
         <span class="project-view-link">View project →</span>
       </div>
 
-      <div class="project-card clickable" style="cursor:pointer" onclick="showPage('vex')">
+      <div class="project-card clickable" onclick="showPage('vex')">
         <div class="project-num">03 — DEC 2024</div>
         <div class="project-name">VEX Competition Robot</div>
         <p class="project-desc">
-          Built two competition robots within 5 months for VEX Beijing Skills Tournament, representing Singapore. Designed and fabricated intake mechanism for cylindrical game objects via Fusion 360 and waterjet cutting.
+          Built two competition robots within 5 months for the VEX Push Back season, representing Singapore. Designed and fabricated intake, magazine, and autonomous CV pipeline via Fusion 360 and waterjet cutting.
         </p>
         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
           <span class="award-badge">🏅 Amaze Award</span>
@@ -901,7 +775,7 @@
         <span class="project-view-link">View full case study →</span>
       </div>
 
-      <div class="project-card clickable" style="cursor:pointer" onclick="showPage('beach')">
+      <div class="project-card clickable" onclick="showPage('beach')">
         <div class="project-num">04 — 2025</div>
         <div class="project-name">Beach Cleaning Robot</div>
         <p class="project-desc">
@@ -934,11 +808,9 @@
     </div>
   </section>
 
-  <!-- AWARDS -->
   <section id="awards">
     <div class="section-label reveal">Recognition</div>
     <h2 class="section-title reveal">Awards &amp;<br><em>Achievements</em></h2>
-
     <div class="awards-list reveal">
       <div class="award-item">
         <div class="award-icon">🏆</div>
@@ -960,7 +832,7 @@
         <div class="award-icon">🤖</div>
         <div class="award-content">
           <h3>Amaze Award — SUTD Competitive Robotics Team</h3>
-          <p>Represented Singapore at VEX Beijing Skills Tournament, building two competition robots within 5 months under strict constraints.</p>
+          <p>Represented Singapore at VEX Push Back season, building two competition robots within 5 months under strict constraints.</p>
         </div>
         <div class="award-year">2024</div>
       </div>
@@ -983,11 +855,9 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
     <div class="section-label reveal">Technical Toolkit</div>
     <h2 class="section-title reveal">What I work<br><em>with</em></h2>
-
     <div class="skills-grid reveal">
       <div class="skill-category">
         <div class="skill-cat-icon">✏️</div>
@@ -1037,11 +907,9 @@
     </div>
   </section>
 
-  <!-- LEADERSHIP -->
   <section id="leadership">
     <div class="section-label reveal">Leadership</div>
     <h2 class="section-title reveal">Driving things<br><em>forward</em></h2>
-
     <div class="leadership-card reveal">
       <h3>What The Hack 2026</h3>
       <span class="role-tag">Project Director</span>
@@ -1053,11 +921,9 @@
     </div>
   </section>
 
-  <!-- EDUCATION -->
   <section id="education">
     <div class="section-label reveal">Education</div>
     <h2 class="section-title reveal">Academic<br><em>foundation</em></h2>
-
     <div class="edu-grid reveal">
       <div class="edu-card">
         <div class="edu-degree">B.Eng. Engineering Product Development</div>
@@ -1074,7 +940,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="contact-section" id="contact">
     <span class="section-label">Get In Touch</span>
     <h2>Let's build<br>something <em>real</em></h2>
@@ -1095,30 +960,25 @@
 
 
 <!-- ============================================================
-     PAGE: GAITWAY PROJECT DETAIL
+     PAGE: GAITWAY
      ============================================================ -->
 <div id="page-gaitway" class="page">
 
   <div class="gw-hero">
     <div class="gw-hero-grid"></div>
     <div class="gw-hero-blob"></div>
-
     <button class="gw-back-btn" onclick="showPage('main')">← Back to projects</button>
-
     <div class="gw-meta">
       <span class="gw-project-num">01</span>
       <span class="gw-sep">/</span>
       <span class="gw-date">February 2026</span>
       <span class="gw-sep">/</span>
-      <span class="gw-date">SUTD Capstone</span>
+      <span class="gw-date">SUTD EPD Showcase</span>
     </div>
-
     <div class="gw-title">Gait<em>Way</em></div>
-
     <p class="gw-tagline">
       A body-mounted wearable exoskeleton module that assists leg lifting for stroke rehabilitation patients — delivering 32 Nm of torque within a $350 budget.
     </p>
-
     <div class="gw-badges">
       <span class="gw-badge-award">🏆 Breakthrough Innovation Award</span>
       <span class="gw-tag">Capstan Drive</span>
@@ -1128,7 +988,6 @@
     </div>
   </div>
 
-  <!-- SPEC BAR -->
   <div class="gw-specs">
     <div class="gw-spec">
       <div class="gw-spec-val">32<span style="font-size:20px">Nm</span></div>
@@ -1139,19 +998,16 @@
       <div class="gw-spec-label">Total Budget Constraint</div>
     </div>
     <div class="gw-spec">
-      <div class="gw-spec-val">Walking Speed<span style="font-size:20px"></span></div>
+      <div class="gw-spec-val" style="font-size:20px; padding-top:8px;">Walking<br>Speed</div>
       <div class="gw-spec-label">Assisted Gait Speed</div>
     </div>
     <div class="gw-spec">
       <div class="gw-spec-val">1</div>
-      <div class="gw-spec-label">Nema 23 Stepper Motor</div>
+      <div class="gw-spec-label">NEMA 23 Stepper Motor</div>
     </div>
   </div>
 
-  <!-- MAIN BODY -->
   <div class="gw-body">
-
-    <!-- LEFT: MAIN CONTENT -->
     <div class="gw-main">
 
       <span class="gw-section-label">Overview</span>
@@ -1165,30 +1021,23 @@
       </p>
 
       <div class="gw-callout">
-        <p><strong>Design challenge:</strong> Achieve a minimum of 40 Nm output torque for reliable leg lifting, packaged in a wearable form factor, using a single motor system, within a $350 component budget.</p>
+        <p><strong>Design challenge:</strong> Achieve sufficient output torque for reliable leg lifting, packaged in a wearable form factor, using a single motor system, within a $350 component budget.</p>
       </div>
 
-      <!-- PHOTO GRID — SECTION 1 -->
       <div class="gw-photo-grid">
-        <div class="gw-photo gw-photo-full short">
+        <div class="gw-photo gw-photo-full">
           <div class="gw-photo-inner">
-            <div class="gw-photo-placeholder">
-              <img src="Pic1.jpg">
-            </div>
+            <img src="Pic1.jpg" alt="GaitWay full system">
           </div>
         </div>
         <div class="gw-photo tall">
           <div class="gw-photo-inner">
-            <div class="gw-photo-placeholder">
-              <img src="Pic2.jpg">
-            </div>
+            <img src="Pic2.jpg" alt="Capstan drum detail">
           </div>
         </div>
-        <div class="gw-photo tall">
+        <div class="gw-photo portrait">
           <div class="gw-photo-inner">
-            <div class="gw-photo-placeholder">
-              <img src="Pic4.jpg">
-            </div>
+            <img src="Pic4.jpg" alt="Wearable on subject">
           </div>
         </div>
       </div>
@@ -1228,7 +1077,7 @@
           <div class="gw-decision-num">04</div>
           <div class="gw-decision-content">
             <h4>Single Motor Architecture</h4>
-            <p>Constraining to a single motor kept costs under the $350 limit while forcing elegant mechanical design. The capstan geometry was calculated to deliver the required torque from a 24V brushless DC motor rated at 12 Nm stall torque, with a 4:1 rope mechanical advantage yielding the 48 Nm target at the leg attachment point.</p>
+            <p>Constraining to a single NEMA 23 stepper motor kept costs under the $350 limit while forcing elegant mechanical design. The capstan geometry was calculated to deliver the required torque, with a TB6600 motor controller providing precise step control via Arduino/ESP32.</p>
           </div>
         </div>
       </div>
@@ -1242,75 +1091,50 @@
         The completed GaitWay system met all primary design targets. During final demonstrations, the device successfully assisted a human subject through a full walking cycle at natural pace, with the wearer reporting a clearly perceptible reduction in effort during the swing phase.
       </p>
       <p class="gw-p">
-        The project was recognised with the <strong style="color: var(--text)">Breakthrough Innovation Award</strong> at SUTD's EPD module showcase — awarded for its combination of thoughtful constraint-driven engineering, novel application of capstan mechanics to wearable rehabilitation, and real demonstrated functionality.
+        The project was recognised with the <strong style="color:var(--text)">Breakthrough Innovation Award</strong> at SUTD's EPD module showcase — awarded for its combination of thoughtful constraint-driven engineering, novel application of capstan mechanics to wearable rehabilitation, and real demonstrated functionality.
       </p>
 
-    </div><!-- end gw-main -->
+    </div>
 
-    <!-- RIGHT: SIDEBAR -->
     <div class="gw-sidebar">
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Project Details</div>
-        <div class="gw-detail-row">
-          <span class="gw-detail-key">Context</span>
-          <span class="gw-detail-val">SUTD EPD Showcase</span>
-        </div>
-        <div class="gw-detail-row">
-          <span class="gw-detail-key">Date</span>
-          <span class="gw-detail-val">Feb 2026</span>
-        </div>
-        <div class="gw-detail-row">
-          <span class="gw-detail-key">Duration</span>
-          <span class="gw-detail-val">~12 weeks</span>
-        </div>
-        <div class="gw-detail-row">
-          <span class="gw-detail-key">Budget</span>
-          <span class="gw-detail-val">$350 SGD</span>
-        </div>
-        <div class="gw-detail-row">
-          <span class="gw-detail-key">Role</span>
-          <span class="gw-detail-val">Lead Mechanical Design and Motor Control</span>
-        </div>
-        <div class="gw-detail-row">
-          <span class="gw-detail-key">Award</span>
-          <span class="gw-detail-val" style="color: var(--accent2)">Breakthrough Innovation</span>
-        </div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Context</span><span class="gw-detail-val">SUTD EPD Showcase</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Date</span><span class="gw-detail-val">Feb 2026</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Duration</span><span class="gw-detail-val">~12 weeks</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Budget</span><span class="gw-detail-val">$350 SGD</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Role</span><span class="gw-detail-val">Lead Mechanical Design & Motor Control</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Award</span><span class="gw-detail-val" style="color:var(--accent2)">Breakthrough Innovation</span></div>
       </div>
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Technologies Used</div>
         <div class="gw-tech-tags">
           <span class="gw-tech-tag">Fusion 360</span>
           <span class="gw-tech-tag">FDM 3D Printing</span>
-          <span class="gw-tech-tag">NEMA 23 Stepper Motor</span>
+          <span class="gw-tech-tag">NEMA 23 Stepper</span>
           <span class="gw-tech-tag">Capstan Drive</span>
-          <span class="gw-tech-tag">TB6600 Motor Controller</span>
+          <span class="gw-tech-tag">TB6600 Controller</span>
           <span class="gw-tech-tag">Arduino</span>
           <span class="gw-tech-tag">ESP32</span>
+          <span class="gw-tech-tag">Dyneema Rope</span>
         </div>
       </div>
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Outcomes</div>
         <div class="gw-outcome-item">32 Nm output torque achieved</div>
-        <div class="gw-outcome-item">Functional assisted gait demonstrated at natural walking pace</div>
+        <div class="gw-outcome-item">Functional assisted gait at natural walking pace</div>
         <div class="gw-outcome-item">$350 budget constraint met with margin</div>
-        <div class="gw-outcome-item">Zero-creep rope transmission via Dyneema selection</div>
+        <div class="gw-outcome-item">Zero-creep rope transmission via Dyneema</div>
         <div class="gw-outcome-item">Breakthrough Innovation Award — SUTD EPD showcase</div>
       </div>
-
-    </div><!-- end gw-sidebar -->
-  </div><!-- end gw-body -->
-
-  <!-- BOTTOM NAV -->
-  <div class="gw-bottom">
-    <div>
-      <button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button>
     </div>
+  </div>
+
+  <div class="gw-bottom">
+    <div><button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button></div>
     <div style="text-align:right">
       <div class="gw-next-label">Next Project</div>
-      <div class="gw-next-name">6DOF Robotic Arm →</div>
+      <div class="gw-next-name" style="cursor:pointer" onclick="showPage('6dof')">6DOF Robotic Arm →</div>
     </div>
   </div>
 
@@ -1330,9 +1154,7 @@
   <div class="gw-hero">
     <div class="gw-hero-grid"></div>
     <div class="gw-hero-blob" style="background: radial-gradient(circle, rgba(232,255,72,0.12) 0%, transparent 65%);"></div>
-
     <button class="gw-back-btn" onclick="showPage('main')">← Back to projects</button>
-
     <div class="gw-meta">
       <span class="gw-project-num">03</span>
       <span class="gw-sep">/</span>
@@ -1340,25 +1162,21 @@
       <span class="gw-sep">/</span>
       <span class="gw-date">SUTD Competitive Robotics · Team SCRT1</span>
     </div>
-
     <div class="gw-title" style="font-size: clamp(40px, 6vw, 80px);">VEX <em>Push</em><br>Back</div>
-
     <p class="gw-tagline">
-      Two competition robots — codenamed Jetson & Huang — built for the 2025–26 VEX V5RC Push Back season. Computer vision, pneumatic magazines, and a fully iterative design process across 5 months of development.
+      Two competition robots — codenamed Jetson &amp; Huang — built for the 2025–26 VEX V5RC Push Back season. Computer vision, pneumatic magazines, and a fully iterative design process across 5 months of development.
     </p>
-
     <div class="gw-badges">
       <span class="gw-badge-award">🏅 Amaze Award — SUTD</span>
       <span class="gw-tag">VEX V5RC</span>
       <span class="gw-tag">Computer Vision</span>
       <span class="gw-tag">Autonomous</span>
-      <span class="gw-tag">3D printed and Waterjetted</span>
+      <span class="gw-tag">3D Printed & Waterjetted</span>
       <span class="gw-tag">Fusion 360</span>
       <span class="gw-tag">Jetson Nano</span>
     </div>
   </div>
 
-  <!-- SPEC BAR -->
   <div class="gw-specs">
     <div class="gw-spec">
       <div class="gw-spec-val">2</div>
@@ -1378,9 +1196,7 @@
     </div>
   </div>
 
-  <!-- MAIN BODY -->
   <div class="gw-body">
-
     <div class="gw-main">
 
       <span class="gw-section-label">Overview</span>
@@ -1397,15 +1213,12 @@
         <p><strong>Season targets:</strong> Hold ≥8 blocks (optimal 14), secure the long goal, achieve a reliable autonomous win with computer vision block detection, and compete at the Singapore V5RC Tournament and Asia Open Signature Event.</p>
       </div>
 
-      <!-- PHOTO GRID 1 -->
       <div class="gw-photo-grid">
         <div class="gw-photo gw-photo-full short">
           <div class="gw-photo-inner">
-            <div class="gw-photo-placeholder">
-              <img src="Pic5"
-            </div>
+            <img src="Pic5.jpg" alt="Jetson and Huang robots">
           </div>
-          <div class="gw-photo-caption">Jetson (15") & Huang (24") — the two SCRT1 Push Back robots</div>
+          <div class="gw-photo-caption">Jetson (15") &amp; Huang (24") — the two SCRT1 Push Back robots</div>
         </div>
       </div>
 
@@ -1415,7 +1228,7 @@
       <h2 class="gw-h2">How the robot<br><em>came together</em></h2>
 
       <p class="gw-p">
-        Every major subsystem went through multiple design iterations, with the team logging decisions, failures, and fixes in this engineering notebook. Below are the four core systems and the key engineering choices made.
+        Every major subsystem went through multiple design iterations, with the team logging decisions, failures, and fixes in the engineering notebook. Below are the four core systems and the key engineering choices made.
       </p>
 
       <div class="gw-decisions">
@@ -1423,33 +1236,32 @@
           <div class="gw-decision-num">01</div>
           <div class="gw-decision-content">
             <h4>Magazine — V1 through V4</h4>
-            <p>The magazine (block storage and scoring system) was the most iterated subsystem. Early dual-magazine designs were scrapped because they couldn't fit within the 15" robot envelope. The final design uses a roller-coaster layout inspired by competitive teams: 4 small rollers (50mm), 1 large roller (90mm, also the hinge point), and an indexer roller for controlled release. The upper section is pneumatically actuated via a 50mm piston, reaching either the long goal or the centre upper goal. A passive end-flap prevents blocks from escaping while scoring.</p>
+            <p>The magazine (block storage and scoring system) was the most iterated subsystem. Early dual-magazine designs were scrapped because they couldn't fit within the 15" robot envelope. The final design uses a roller-coaster layout: 4 small rollers (50mm), 1 large roller (90mm, also the hinge point), and an indexer roller for controlled release. The upper section is pneumatically actuated via a 50mm piston, reaching either the long goal or the centre upper goal. A passive end-flap prevents blocks from escaping while scoring.</p>
           </div>
         </div>
         <div class="gw-decision">
           <div class="gw-decision-num">02</div>
           <div class="gw-decision-content">
             <h4>Computer Vision — Jetson Nano + Global Shutter Camera</h4>
-            <p>The initial VEX AI camera was plagued by motion blur and rolling shutter artefacts, causing the robot to "go blind" during fast movements. The team switched to a USB global shutter camera running at 90 FPS with a 160° FOV. A custom calibration GUI was built to streamline homography and distortion correction for both robots. A Jetson Nano runs the detection pipeline, communicating with the V5 brain over TTL. Final CV latency: ~100ms — a major improvement over the original system.</p>
+            <p>The initial VEX AI camera was plagued by motion blur and rolling shutter artefacts, causing the robot to "go blind" during fast movements. The team switched to a USB global shutter camera running at 90 FPS with a 160° FOV. A custom calibration GUI was built to streamline homography and distortion correction for both robots. A Jetson Nano runs the detection pipeline, communicating with the V5 brain over TTL. Final CV latency: ~100ms.</p>
           </div>
         </div>
         <div class="gw-decision">
           <div class="gw-decision-num">03</div>
           <div class="gw-decision-content">
             <h4>The Yoinker — A Late Addition</h4>
-            <p>With the hardware team insisting development was frozen, the software lead advocated for a last-minute tool to drag blocks from the parking zone during skills runs — dubbed the "Yoinker." V1 used a slim 2mm PETG L-bracket that proved too fragile. V2 thickened it to 7mm, embedded the nylock nut, and shifted the pivot point 20mm rearward to clear intake interference. It was retained on the robot for the Singapore V5RC Tournament skills run.</p>
+            <p>With the hardware team insisting development was frozen, the software lead advocated for a last-minute tool to drag blocks from the parking zone during skills runs — dubbed the "Yoinker." V1 used a slim 2mm PETG L-bracket that proved too fragile. V2 thickened it to 7mm, embedded the nylock nut, and shifted the pivot point 20mm rearward to clear intake interference.</p>
           </div>
         </div>
         <div class="gw-decision">
           <div class="gw-decision-num">04</div>
           <div class="gw-decision-content">
             <h4>Drivetrain & Tracking Wheels</h4>
-            <p>The base runs 10 × 11W motors in the drive. Tracking wheels for odometry initially used a double-row 2" omni wheel split in half — which repeatedly snapped the plastic shaft on the parking zone lip. The fix: a purpose-built single-row omni wheel with a stainless steel high-strength shaft replacing the plastic one. A VEX IMU and two rotation sensors complete the localisation system.</p>
+            <p>The base runs 10 × 11W motors in the drive. Tracking wheels for odometry initially used a double-row 2" omni wheel split in half — which repeatedly snapped the plastic shaft on the parking zone lip. The fix: a purpose-built single-row omni wheel with a stainless steel high-strength shaft. A VEX IMU and two rotation sensors complete the localisation system.</p>
           </div>
         </div>
       </div>
 
-      <!-- PHOTO GRID 2 -->
       <div class="gw-photo-grid">
         <div class="gw-photo">
           <div class="gw-photo-inner">
@@ -1459,28 +1271,26 @@
               <div class="gw-photo-hint">Replace with your image</div>
             </div>
           </div>
-          <div class="gw-photo-caption">Fusion 360 assembly — magazine & base</div>
+          <div class="gw-photo-caption">Fusion 360 assembly — magazine &amp; base</div>
         </div>
         <div class="gw-photo">
           <div class="gw-photo-inner">
-            <div class="gw-photo-placeholder">
-              <img src="Pic6">
-            </div>
+            <img src="Pic6.jpg" alt="Singapore V5RC Tournament">
           </div>
           <div class="gw-photo-caption">Singapore V5RC Tournament — skills run</div>
         </div>
         <div class="gw-photo">
           <div class="gw-photo-inner">
-            <div class="gw-photo-placeholder">
-              <img src="Pic7">
-            </div>
+            <img src="Pic7.jpg" alt="Team SCRT1 workshop">
           </div>
           <div class="gw-photo-caption">Team SCRT1 in the workshop</div>
         </div>
         <div class="gw-photo">
           <div class="gw-photo-inner">
             <div class="gw-photo-placeholder">
-              <img src="Pic7">
+              <div class="gw-photo-icon">🏟️</div>
+              <div class="gw-photo-label">Asia Open / competition floor</div>
+              <div class="gw-photo-hint">Replace with your image</div>
             </div>
           </div>
           <div class="gw-photo-caption">Asia Open Signature Event preparation</div>
@@ -1501,19 +1311,16 @@
 
     </div>
 
-    <!-- SIDEBAR -->
     <div class="gw-sidebar">
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Project Details</div>
         <div class="gw-detail-row"><span class="gw-detail-key">Team</span><span class="gw-detail-val">SCRT1 — SUTD</span></div>
         <div class="gw-detail-row"><span class="gw-detail-key">Season</span><span class="gw-detail-val">2025–26 Push Back</span></div>
-        <div class="gw-detail-row"><span class="gw-detail-key">Robots</span><span class="gw-detail-val">Jetson (15") & Huang (24")</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Robots</span><span class="gw-detail-val">Jetson (15") &amp; Huang (24")</span></div>
         <div class="gw-detail-row"><span class="gw-detail-key">Timeline</span><span class="gw-detail-val">~5 months</span></div>
         <div class="gw-detail-row"><span class="gw-detail-key">Competitions</span><span class="gw-detail-val">SG V5RC · Asia Open</span></div>
-        <div class="gw-detail-row"><span class="gw-detail-key">Award</span><span class="gw-detail-val" style="color: var(--accent2)">Amaze Award — SUTD</span></div>
+        <div class="gw-detail-row"><span class="gw-detail-key">Award</span><span class="gw-detail-val" style="color:var(--accent2)">Amaze Award — SUTD</span></div>
       </div>
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Technologies Used</div>
         <div class="gw-tech-tags">
@@ -1529,7 +1336,6 @@
           <span class="gw-tech-tag">Global Shutter Cam</span>
         </div>
       </div>
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Key Stats</div>
         <div class="gw-outcome-item">72 pts driver skills at Singapore V5RC</div>
@@ -1537,14 +1343,11 @@
         <div class="gw-outcome-item">Magazine V1 → V4 iteration cycle</div>
         <div class="gw-outcome-item">Sponsored by PolyMate</div>
       </div>
-
     </div>
   </div>
 
   <div class="gw-bottom">
-    <div>
-      <button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button>
-    </div>
+    <div><button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button></div>
     <div style="text-align:right">
       <div class="gw-next-label">Next Project</div>
       <div class="gw-next-name" style="cursor:pointer" onclick="showPage('6dof')">6DOF Robotic Arm →</div>
@@ -1567,9 +1370,7 @@
   <div class="gw-hero">
     <div class="gw-hero-grid"></div>
     <div class="gw-hero-blob" style="background: radial-gradient(circle, rgba(100,220,180,0.12) 0%, transparent 65%);"></div>
-
     <button class="gw-back-btn" onclick="showPage('main')">← Back to projects</button>
-
     <div class="gw-meta">
       <span class="gw-project-num">02</span>
       <span class="gw-sep">/</span>
@@ -1577,13 +1378,10 @@
       <span class="gw-sep">/</span>
       <span class="gw-date">SUTD EPD Module</span>
     </div>
-
     <div class="gw-title">6<em>DOF</em><br>Arm</div>
-
     <p class="gw-tagline">
       An assistive feeding robot with six degrees of freedom. Bearing-supported joints, servo-driven actuation, and refined link geometry for stable, precise end-effector positioning.
     </p>
-
     <div class="gw-badges">
       <span class="gw-tag">6DOF</span>
       <span class="gw-tag">Servo Control</span>
@@ -1593,7 +1391,6 @@
     </div>
   </div>
 
-  <!-- SPEC BAR -->
   <div class="gw-specs">
     <div class="gw-spec">
       <div class="gw-spec-val">6</div>
@@ -1614,7 +1411,6 @@
   </div>
 
   <div class="gw-body">
-
     <div class="gw-main">
 
       <span class="gw-section-label">Overview</span>
@@ -1628,20 +1424,67 @@
         <p><strong>Design focus:</strong> Bearing-supported joints at every axis for smooth, low-friction motion — eliminating the wobble that plagues servo-direct-drive arms. Refined link geometry to improve structural stiffness and reduce flex under load.</p>
       </div>
 
-      <!-- PHOTO GRID -->
       <div class="gw-photo-grid">
         <div class="gw-photo gw-photo-full short">
           <div class="gw-photo-inner">
+            <img src="Pic8.jpg" alt="6DOF robotic arm assembled">
+          </div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
             <div class="gw-photo-placeholder">
-              <imr src="Pic8">
+              <div class="gw-photo-icon">🔩</div>
+              <div class="gw-photo-label">Joint / bearing close-up</div>
+              <div class="gw-photo-hint">Replace with your image</div>
             </div>
           </div>
+          <div class="gw-photo-caption">Bearing-supported joint detail</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🦾</div>
+              <div class="gw-photo-label">End-effector / gripper</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">End-effector positioning</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📐</div>
+              <div class="gw-photo-label">CAD / Fusion 360</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Fusion 360 assembly model</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🖨️</div>
+              <div class="gw-photo-label">3D printed parts / links</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">FDM-printed link geometry</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🎬</div>
+              <div class="gw-photo-label">Motion / demo photo</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Arm in motion — feeding demonstration</div>
+        </div>
       </div>
 
     </div>
 
     <div class="gw-sidebar">
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Project Details</div>
         <div class="gw-detail-row"><span class="gw-detail-key">Context</span><span class="gw-detail-val">SUTD EPD Module</span></div>
@@ -1650,7 +1493,6 @@
         <div class="gw-detail-row"><span class="gw-detail-key">Application</span><span class="gw-detail-val">Assistive Feeding</span></div>
         <div class="gw-detail-row"><span class="gw-detail-key">Actuation</span><span class="gw-detail-val">Servo-driven</span></div>
       </div>
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Technologies Used</div>
         <div class="gw-tech-tags">
@@ -1662,21 +1504,17 @@
           <span class="gw-tech-tag">Inverse Kinematics</span>
         </div>
       </div>
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Key Outcomes</div>
         <div class="gw-outcome-item">Bearing-supported joints at all 6 axes — smooth, low-friction motion</div>
         <div class="gw-outcome-item">Refined link geometry reduced structural flex under load</div>
         <div class="gw-outcome-item">Precise end-effector positioning for feeding task</div>
       </div>
-
     </div>
   </div>
 
   <div class="gw-bottom">
-    <div>
-      <button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button>
-    </div>
+    <div><button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button></div>
     <div style="text-align:right">
       <div class="gw-next-label">Previous Project</div>
       <div class="gw-next-name" style="cursor:pointer" onclick="showPage('vex')">← VEX Push Back</div>
@@ -1699,9 +1537,7 @@
   <div class="gw-hero">
     <div class="gw-hero-grid"></div>
     <div class="gw-hero-blob" style="background: radial-gradient(circle, rgba(72,200,255,0.12) 0%, transparent 65%);"></div>
-
     <button class="gw-back-btn" onclick="showPage('main')">← Back to projects</button>
-
     <div class="gw-meta">
       <span class="gw-project-num">04</span>
       <span class="gw-sep">/</span>
@@ -1709,13 +1545,10 @@
       <span class="gw-sep">/</span>
       <span class="gw-date">SUTD EPD Module</span>
     </div>
-
     <div class="gw-title" style="font-size: clamp(36px, 5.5vw, 76px);">Beach <em>Clean</em><br>Robot</div>
-
     <p class="gw-tagline">
       An autonomous coastal cleanup robot built for real-world deployment. Sensor integration for debris detection and navigation, winning the Jyoti &amp; Aditya Mathur Student Achievement Award.
     </p>
-
     <div class="gw-badges">
       <span class="gw-badge-award">🏆 Jyoti &amp; Aditya Mathur Student Achievement Award</span>
       <span class="gw-tag">Autonomous</span>
@@ -1725,7 +1558,6 @@
     </div>
   </div>
 
-  <!-- SPEC BAR -->
   <div class="gw-specs">
     <div class="gw-spec">
       <div class="gw-spec-val">🏆</div>
@@ -1746,7 +1578,6 @@
   </div>
 
   <div class="gw-body">
-
     <div class="gw-main">
 
       <span class="gw-section-label">Overview</span>
@@ -1759,20 +1590,72 @@
         The project was recognised with the <strong style="color:var(--text)">Jyoti &amp; Aditya Mathur Student Achievement Award</strong> at SUTD, specifically cited for its sensor integration quality and the practicality of its deployment approach.
       </p>
 
-      <!-- PHOTO GRID — 6 slots for your photos -->
       <div class="gw-photo-grid">
         <div class="gw-photo gw-photo-full short">
           <div class="gw-photo-inner">
             <div class="gw-photo-placeholder">
-              <img src="">
+              <div class="gw-photo-icon">📸</div>
+              <div class="gw-photo-label">Full robot — hero shot</div>
+              <div class="gw-photo-hint">Replace with your image</div>
             </div>
           </div>
           <div class="gw-photo-caption">Beach Cleaning Robot — fully assembled</div>
         </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🔬</div>
+              <div class="gw-photo-label">Sensor array / electronics</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Sensor integration &amp; electronics</div>
+        </div>
+        <div class="gw-photo tall">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🏖️</div>
+              <div class="gw-photo-label">Field deployment / beach test</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Field deployment test on beach terrain</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">📐</div>
+              <div class="gw-photo-label">CAD / design view</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">CAD model / design</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🛠️</div>
+              <div class="gw-photo-label">Build / workshop</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Build process</div>
+        </div>
+        <div class="gw-photo">
+          <div class="gw-photo-inner">
+            <div class="gw-photo-placeholder">
+              <div class="gw-photo-icon">🏆</div>
+              <div class="gw-photo-label">Award / presentation</div>
+              <div class="gw-photo-hint">Replace with your image</div>
+            </div>
+          </div>
+          <div class="gw-photo-caption">Student Achievement Award presentation</div>
+        </div>
+      </div>
+
     </div>
 
     <div class="gw-sidebar">
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Project Details</div>
         <div class="gw-detail-row"><span class="gw-detail-key">Context</span><span class="gw-detail-val">SUTD EPD Module</span></div>
@@ -1781,7 +1664,6 @@
         <div class="gw-detail-row"><span class="gw-detail-key">Environment</span><span class="gw-detail-val">Coastal / Beach</span></div>
         <div class="gw-detail-row"><span class="gw-detail-key">Award</span><span class="gw-detail-val" style="color:var(--accent2)">Student Achievement Award</span></div>
       </div>
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Technologies Used</div>
         <div class="gw-tech-tags">
@@ -1794,21 +1676,17 @@
           <span class="gw-tech-tag">3D Printing</span>
         </div>
       </div>
-
       <div class="gw-sidebar-block">
         <div class="gw-sidebar-title">Key Outcomes</div>
-        <div class="gw-outcome-item">Autonomous debris detection & navigation</div>
+        <div class="gw-outcome-item">Autonomous debris detection &amp; navigation</div>
         <div class="gw-outcome-item">Real-world field deployment on beach terrain</div>
-        <div class="gw-outcome-item">Jyoti & Aditya Mathur Student Achievement Award</div>
+        <div class="gw-outcome-item">Jyoti &amp; Aditya Mathur Student Achievement Award</div>
       </div>
-
     </div>
   </div>
 
   <div class="gw-bottom">
-    <div>
-      <button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button>
-    </div>
+    <div><button class="gw-back-btn" onclick="showPage('main')" style="margin-bottom:0">← All Projects</button></div>
     <div style="text-align:right">
       <div class="gw-next-label">Previous Project</div>
       <div class="gw-next-name" style="cursor:pointer" onclick="showPage('6dof')">← 6DOF Robotic Arm</div>
@@ -1824,12 +1702,10 @@
 
 
 <script>
-  /* ---- PAGE ROUTING ---- */
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + id).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Re-run reveal animations for newly shown page
     setTimeout(initReveal, 100);
   }
 
@@ -1840,19 +1716,16 @@
     }, 80);
   }
 
-  /* ---- THEME TOGGLE ---- */
   const toggle = document.getElementById('theme-toggle');
   const root = document.documentElement;
   const saved = localStorage.getItem('theme');
   if (saved === 'light') { root.classList.add('light'); toggle.textContent = '☀️'; }
-
   toggle.addEventListener('click', () => {
     const isLight = root.classList.toggle('light');
     toggle.textContent = isLight ? '☀️' : '🌙';
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
   });
 
-  /* ---- SCROLL REVEAL ---- */
   function initReveal() {
     const reveals = document.querySelectorAll('.reveal:not(.visible)');
     const observer = new IntersectionObserver((entries) => {
@@ -1867,7 +1740,6 @@
   }
   initReveal();
 
-  /* ---- NAV HIGHLIGHT ---- */
   const sections = document.querySelectorAll('section[id], .hero');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
